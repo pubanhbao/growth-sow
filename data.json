@@ -1,0 +1,346 @@
+{
+  "meta": {
+    "title": "Growth Team — Project Map",
+    "team_summary": "Growth Team · 7 người · 2 pods · Full-stack App Growth",
+    "subtitle": "Project Map & Scope of Work",
+    "last_updated": "2026-05-20"
+  },
+  "pods": [
+    {
+      "id": "p1", "label": "P1",
+      "name": "App Acquisition & Activation",
+      "nav_label": "📲 Pod 1 — Acquisition & Activation",
+      "funnel": "L1 → L2", "color": "blue", "project_count": 7,
+      "description": "App Growth toàn diện — hands-on chạy paid acquisition, explore kênh mới, đo activation quality, drive web-to-app conversion. Mục tiêu: bring in new app users có chất lượng và đảm bảo họ activate trong 7 ngày đầu.",
+      "kpis": ["App new users (installs)","D1 retention rate","% Activated ≥20 adviews D7","CPI vs benchmark","Web-to-app conversion rate","% Sign-up W1"],
+      "channels": ["Google UAC","FB/IG App","ASA","App Store Pages","TikTok Ads","Affiliate · Referral","Web-to-app","Social Seeding (N8N)"],
+      "note": "✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh",
+      "personnel": [
+        {"role": "Senior #1","name": "TBH","description": "App Acquisition · L1→L2 · Web-to-app. Owns paid install campaigns, ASA, activation dashboard, onboarding."},
+        {"role": "Intern — Acquisition","name": "My Lê Ngọc Thảo","description": "Set up & monitor CRM acquisition & activation flows theo brief Senior #1."}
+      ],
+      "footer_note": "👥 Both peers — same reporting line to MKT Manager. Senior #1 và Senior #2 report trực tiếp lên MKT Manager.",
+      "projects": [
+        {
+          "id": "paid-app-install", "emoji": "📦",
+          "name": "Paid App Install — PTY, JOB, GDS, VEH",
+          "tagline": "Acquire new app users với quality cao qua paid channels — 4 verticals",
+          "status": "In Progress",
+          "description": "Chạy paid app install campaigns cho cả 4 verticals, mỗi vertical dẫn về custom store page riêng. PTY và JOB đã active từ T1/2026 trên account mới. GDS và VEH chưa bắt đầu do chưa có brief. ASA đã paperwork xong và setup trong T2.",
+          "kpis": ["CPI reasonable vs benchmark","% Activated D7 ≥ 32%","W1 RR ≥ 30%","% Sign-up","D1 RR ≥ 30%"],
+          "channels": ["Google UAC","Facebook/IG App","ASA","Catalog Ads"],
+          "tasks": [
+            {"label": "PTY — campaign trên account mới, dẫn về custom store", "status": "DONE"},
+            {"label": "JOB — campaign trên account mới, dẫn về custom store", "status": "DONE"},
+            {"label": "ASA — paperwork, email approval, setup, air 03/02", "status": "DONE"},
+            {"label": "Scale camp có RR D1 ≥ 30%, tắt camp xấu", "status": "DOING"},
+            {"label": "ABR → DWH mapping aaid (đang investigate lệch số)", "status": "DOING"},
+            {"label": "GDS + VEH — campaign in-app (mass_install, make_lead, adview_7d)", "status": "NOT STARTED"},
+            {"label": "Clarify KPI Q2 per vertical với Đạt", "status": "TODO"}
+          ],
+          "blockers": ["GDS & VEH chưa có brief từ vertical","Lệch số ABR vs GA4/DWH — đang investigate aaid mapping"],
+          "next_steps": ["Launch GDS + VEH in-app campaign","Fix ABR→DWH mapping workflow auto"],
+          "pics": [{"name": "TBH","role": "PIC"},{"name": "Kiet Huynh","role": "Support (tạm)"},{"name": "Đức Lê","role": "Data"}]
+        },
+        {
+          "id": "web-to-app", "emoji": "🌐",
+          "name": "Web-to-App Conversion",
+          "tagline": "Tận dụng SEO/organic web traffic có high-intent, chuyển sang app install qua deeplink",
+          "status": "Pending",
+          "description": "Channel đã bị drop từ T6/2023. App frequency ~6 sessions/month cao gấp 4x web (~1.5/month). Khi user click Social ad, Social platform mở Web-in-App (chưa login) → friction lớn.",
+          "kpis": ["New app users from web","Web-to-App conversion %","Deeplink success rate","% login sau install"],
+          "channels": ["Smart App Banner","Deeplink routing","Display Banner","Retarget web users"],
+          "tasks": [
+            {"label": "Investigate số view/impression/click bị bé với dev & ABR", "status": "IN PROGRESS"},
+            {"label": "Build dashboard/chart track Web→App source", "status": "NOT STARTED"},
+            {"label": "Deeplink từ Social → chỉ mở Web-in-App (chưa native app)", "status": "BLOCKED"}
+          ],
+          "blockers": ["Dev fix tracking — đã có solution, chờ release & test","Deeplink issue: đang sync #ct-airbridge-mkt-protech, chờ dev confirm timeline"],
+          "next_steps": [],
+          "pics": [{"name": "TBH","role": "PIC"},{"name": "Airbridge team","role": "Tech"}]
+        },
+        {
+          "id": "social-acquisition", "emoji": "📱",
+          "name": "Social Acquisition",
+          "tagline": "Seeding listings chất lượng lên Social channels qua N8N automation để drive app installs",
+          "status": "In Progress",
+          "description": "Facebook: 28h21'/tháng vs Chợ Tốt 4 session/tháng. Strategy: auto-post 200 quality listings (score >70)/ngày lên FB Groups, Fanpage, Zalo Groups qua N8N pipeline.",
+          "kpis": ["Installs from Social","Click-to-install rate","Visitor by source","Cost per install"],
+          "channels": ["FB Groups","FB Page Channel","Zalo Groups","FB Ads"],
+          "tasks": [
+            {"label": "N8N pipeline auto-post 200 listings/ngày — live", "status": "DONE"},
+            {"label": "Report Fanpage SĐTCT & XLGM", "status": "DONE"},
+            {"label": "Research & compare channels — Thuy/Trâm", "status": "DOING"},
+            {"label": "Estimate impact/contribution per channel", "status": "TODO"}
+          ],
+          "blockers": [], "next_steps": [],
+          "pics": [{"name": "Chau Vu Bao","role": "PIC"},{"name": "Trâm Phan","role": "VEH"},{"name": "Ngọc Lê","role": "ĐT"}]
+        },
+        {
+          "id": "login-signup", "emoji": "🔐",
+          "name": "Login & Signup (Force Login)",
+          "tagline": "Uplift % login MAU từ 7.63% → 12%+. Done Q4/2024, đang maintain.",
+          "status": "Done / Maintain",
+          "description": "Project quan trọng nhất 2025. 2 force login triggers: (1) khi user make_lead, (2) khi >5 adview/ngày. Post-login: content cards D1-D2 educate Location + Save. Hiện maintain mode.",
+          "kpis": ["Login MAU: 7.63% → ~10%","Force Login Lead: +171k MAU","Force Login Adview: +90k MAU","Target Q4: 12%"],
+          "channels": [],
+          "tasks": [
+            {"label": "Force Login Lead", "status": "DONE"},
+            {"label": "Force Login Adview", "status": "DONE"},
+            {"label": "Content Cards D1-D2", "status": "DONE"},
+            {"label": "Login Campaign", "status": "DONE"}
+          ],
+          "open_questions": ["2026 strategy: maintain ~10% hay tiếp tục drive lên 12%+?","Google Auth nên unblock không? Cần check ProTech feasibility."],
+          "blockers": [], "next_steps": [],
+          "pics": [{"name": "Đức Lê","role": "PA"},{"name": "Đoàn","role": "PD"},{"name": "Đạt","role": "Handover from"}]
+        },
+        {
+          "id": "app-activation", "emoji": "⚡",
+          "name": "App Activation — First 7 Days",
+          "tagline": "Target: ≥20 adviews hoặc 1 lead trong D7. Uplift 32% → 50% (T6) → 60% (T12)",
+          "status": "In Progress",
+          "description": "Project lớn nhất của App Growth. Hiện 32% activated (85% target). Non-activated users = 40% new users daily, 60% từ Direct. Buyer activation path: Adview → Similar → Search Filter → Login → Lead → Load More.",
+          "kpis": ["% user_20adview D7","% user_1lead D7","Activation rate: 32%→50% T6","D1 RR & W1 RR"],
+          "channels": ["OnFlow Popup (6 camps)","Digital Retarget install_7d","Push Notification","Content Cards D1-D2","Email/ZNS (manual)"],
+          "tasks": [
+            {"label": "Activation dashboard (% user_20adview)", "status": "DONE"},
+            {"label": "OnFlow 6 campaigns (segment 5-19 adviews)", "status": "DONE"},
+            {"label": "PROD Analysis 'How to activate new user in first 7 days'", "status": "DONE"},
+            {"label": "Activation tooltips — define content cho từng action", "status": "DOING"},
+            {"label": "Dashboard breakdown by acquisition source + activation campaign", "status": "NOT STARTED"},
+            {"label": "Survey D7 (2-3 câu cho user chưa đủ 20 adviews)", "status": "NOT STARTED"}
+          ],
+          "key_insights": ["Distinctive activation: Chat → Save Features → Follow profile → Lead → interact video. Users 'Save' = highest diff. giữa high & low RR."],
+          "blockers": ["ZNS + Email chưa auto — cần email platform mới","Product onboarding improvement ở Product side (Nhung)"],
+          "next_steps": [],
+          "pics": [{"name": "TBH","role": "PIC"},{"name": "Đức Lê","role": "PA"},{"name": "Nhung Phạm","role": "PD"},{"name": "Kiến · Thiện","role": "Data"}]
+        },
+        {
+          "id": "onboarding-flow", "emoji": "🚀",
+          "name": "Onboarding Flow",
+          "tagline": "First-run UX: location first, educate key features cho new users D1-D8",
+          "status": "In Progress",
+          "description": "Đã experiment và proven onboarding uplift activation. Approach: popup location first → educate Save → guide Search/Filter → make_lead. in-app cards visibility <5% impressions, notification reach chỉ ~15% users đã allow.",
+          "kpis": ["% allow notification","Location setup rate D1","Feature adoption D7","Activation rate uplift"],
+          "channels": ["Popup onboarding","Content Cards D1-D8","Push Noti","Email drip (todo)"],
+          "tasks": [
+            {"label": "Popup onboarding flow (location first) — live", "status": "DONE"},
+            {"label": "Research post-launch + experiment result — FINAL", "status": "DONE"},
+            {"label": "Content cards D1-D2: Educate Location, Save", "status": "DONE"},
+            {"label": "Product (Nhung) discovery — propose solutions improve journey", "status": "IN PROGRESS"},
+            {"label": "Email drip series D1-D5 (fallback cho user chưa open noti)", "status": "TODO"},
+            {"label": "Test incentive nhẹ bật noti (badge, xu, mini event)", "status": "TODO"}
+          ],
+          "blockers": [], "next_steps": [],
+          "pics": [{"name": "TBH · My Lê","role": "MKT"},{"name": "Đức Lê","role": "PA"},{"name": "Nhung Phạm","role": "PD"}]
+        },
+        {
+          "id": "chatbot-social", "emoji": "💬",
+          "name": "Chatbot on Social",
+          "tagline": "AI Chatbot FB/Zalo: detect intent → guide mua hàng → nurture Social → App install",
+          "status": "In Progress",
+          "description": "Facebook 28h21'/tháng vs Chợ Tốt 4 session/tháng — Social là touchpoint quan trọng nhất để acquire. Chatbot làm '1-stop point'. Đã build basic flows, chờ deploy Production.",
+          "kpis": ["Chatbot sessions","Intent detection rate","Social → App install conversion","Resolution rate"],
+          "channels": [],
+          "flows": [
+            {"label": "Chào hỏi","done": true},{"label": "About CT","done": true},
+            {"label": "Đăng bán","done": true},{"label": "Policy","done": true},
+            {"label": "Kinh nghiệm mua","done": false},{"label": "Link tải app","done": false}
+          ],
+          "tasks": [
+            {"label": "Chào hỏi, About CT, Đăng bán, Policy flows — live", "status": "DONE"},
+            {"label": "Intent detection + classification workflow", "status": "DONE"},
+            {"label": "Deploy lên Production — follow Nguyên", "status": "WAITING"},
+            {"label": "Kinh nghiệm mua hàng flow", "status": "CHƯA LÀM"},
+            {"label": "Link tải app / mở app từ chatbot", "status": "CHƯA LÀM"},
+            {"label": "Cơ chế tự học (auto-expand use cases)", "status": "TODO"},
+            {"label": "STOP / CONTINUE / GẶP TƯ VẤN VIÊN mechanic", "status": "TODO"}
+          ],
+          "blockers": ["Chờ Nguyên (ProTech) deploy lên Production","Chatbot memory architecture — cần advise từ Thiện"],
+          "next_steps": [],
+          "pics": [{"name": "Brand Lộc · Thuy","role": ""},{"name": "Đạt","role": "Growth"},{"name": "Nguyên · Nhung · Dan","role": "ProTech"}]
+        }
+      ]
+    },
+    {
+      "id": "p2", "label": "P2",
+      "name": "Engagement, Retention & Experiments",
+      "nav_label": "🔄 Pod 2 — Engagement & Retention",
+      "funnel": "L3 → L4", "color": "purple", "project_count": 7,
+      "description": "Own toàn bộ funnel L3→L4. Experiment architect — đề xuất và run A/B experiments tăng DAU, retention, make_lead. Primary product liaison cho ProTech. Chạy paid out-app campaigns và xây engagement mechanics dài hạn.",
+      "kpis": ["D7 retention (new & current)","DAU/MAU ratio","DAU w lead (CRM source)","Experiment velocity","DAU w lead per vertical (paid)","CPA per vertical campaign"],
+      "channels": ["Behavior retargeting","CRM / Push Noti","Viral & growth loops","Partnership cross-app","FB/GG Paid Digital"],
+      "note": "✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh",
+      "personnel": [
+        {"role": "Senior #2","name": "TBH (handover từ Đạt)","description": "Engagement · Retention · Experiments. Own L3→L4. Experiment architect. Primary product liaison với ProTech."},
+        {"role": "Digital Specialist","name": "Kiet Huynh","description": "Paid ads out-app → tăng DAU w lead per vertical. Campaign management PTY, JOB, VEH, GDS."},
+        {"role": "Intern — Engagement","name": "Binh Nguyen Thanh","description": "CRM engagement & retention flows. Push notification execution theo brief Senior #2."}
+      ],
+      "footer_note": "",
+      "projects": [
+        {
+          "id": "campaign-performance", "emoji": "📊",
+          "name": "Campaign Performance — Digital Ads",
+          "tagline": "Ongoing monthly budget per vertical (DAU/DwL) + sync với Brand MKT campaign theo theme",
+          "status": "In Progress",
+          "description": "2 chế độ: (1) Ongoing monthly — budget allocated per vertical cho DAU/DwL campaigns (Google AWO, DWL, Facebook/IG). (2) MKT Campaign mode — khi Brand lead một campaign lớn, Growth sync budget để chạy cùng theme. Bao gồm Livestream 6 phiên/tháng.",
+          "budget": [
+            {"vertical": "PTY","amount": "400M/tháng"},{"vertical": "JOB","amount": "520M/tháng"},
+            {"vertical": "VEH","amount": "187M/tháng"},{"vertical": "GDS","amount": "166M/tháng"}
+          ],
+          "kpis": ["DAU w lead per vertical","CPA per vertical","ROAS by channel","DWL focus segment"],
+          "channels": [],
+          "tasks": [
+            {"label": "PTY + JOB — KPI & Budget 2026, structure campaign AWO", "status": "DONE"},
+            {"label": "VEH Hero SKU support campaign — đã air, đang review kết quả", "status": "DONE"},
+            {"label": "Clarify KPI Q2 per vertical với Đạt", "status": "DOING"},
+            {"label": "JOB: creative testing Facebook + push by job type", "status": "DOING"},
+            {"label": "Livestream: vận hành 6 phiên/tháng, plan Q2", "status": "DOING"},
+            {"label": "Biz Obj 2: Tăng tỉ lệ user vào app make_lead từ Paid", "status": "PENDING"},
+            {"label": "PTY: Fix make_lead conversion goal với Dung", "status": "TODO"}
+          ],
+          "blockers": [], "next_steps": [],
+          "pics": [{"name": "Kiet Huynh","role": "PIC"},{"name": "Binh Nguyen","role": "Push Noti"},{"name": "Hoàng · Ngân","role": "Data"}]
+        },
+        {
+          "id": "save-continue", "emoji": "💾",
+          "name": "Save & Continue — Feature Optimization",
+          "tagline": "Optimize Save Ad + Save Search UX để tăng engagement và lead rate",
+          "status": "In Progress",
+          "description": "Data: users có Save → lead 46.7% vs không Save 22.1%. Research đã identify 3 UX issues. Cần Product propose solutions và MKT educate users về giá trị Save.",
+          "key_data": ["w/ Save → Lead: 46.7%","No Save → Lead: 22.1%","Android save rate: 85.96% adview","iOS: 81.10%"],
+          "issues_found": ["Save button ở top, user cần save sau khi xem xong (bottom)","Save Search entry point sai moment","Saved ad list khó access"],
+          "kpis": [], "channels": [],
+          "tasks": [
+            {"label": "Research Save Search & Save Ad — FINAL (Feb 2025)", "status": "DONE"},
+            {"label": "Digital ads test event Save + Chat", "status": "DONE"},
+            {"label": "Product propose solutions từ research findings", "status": "IN PROGRESS"},
+            {"label": "Revamp user profile/homepage → tạo 'save habit'", "status": "TODO"},
+            {"label": "Email + Noti educate Save value cho new users", "status": "TODO"}
+          ],
+          "blockers": [], "next_steps": [],
+          "pics": [{"name": "Trinh Huynh · Chau Vu Bao","role": "R"},{"name": "Tan Nguyen","role": "A"},{"name": "Đạt · Đức · Trang","role": "C"}]
+        },
+        {
+          "id": "collections-mf", "emoji": "📂",
+          "name": "Collections & MF-Experience",
+          "tagline": "Build 'my-self' behaviors: My Assets, My Activities, My Good Deals, My Shop, Nearby",
+          "status": "In Progress",
+          "description": "2025 Engagement Plan focus area. Tạo 'my-self' behaviors để user cảm thấy app là của họ. Key mechanics: Save + Collection + Comparison → better consideration → make_lead.",
+          "kpis": ["Collection creation rate","Save → Lead conversion","DAU w collection","Return visit to collection"],
+          "features": ["Collections","Save Ad","Comparison","Nearby","My Profile","Recent Activity"],
+          "channels": [],
+          "tasks": [
+            {"label": "1st collection campaign + report", "status": "DONE"},
+            {"label": "2nd education campaign — Nearby (Noti)", "status": "DONE"},
+            {"label": "Dashboard collection (theo Jacky's input)", "status": "DOING"},
+            {"label": "LP Experience — Collection không continue được", "status": "BLOCKED"},
+            {"label": "LP Map — không continue được", "status": "BLOCKED"},
+            {"label": "Viết BRD mới cho Landing Page Experience", "status": "TODO (Chi Lê)"}
+          ],
+          "blockers": ["LP Collection và Map 'không continue được' — cần BRD mới","Search + Reco algorithm improvement ở Product side (in-progress)"],
+          "next_steps": [],
+          "pics": [{"name": "Đạt → Charlie","role": "PIC"},{"name": "Jacky","role": "Data"}]
+        },
+        {
+          "id": "campaign-new-ui", "emoji": "✨",
+          "name": "Campaign New UI + Buyer Journey Integration",
+          "tagline": "New UI proven: Lead +10.75%, Adview +12.59%. Buyer journey integration ongoing.",
+          "status": "Done / Ongoing",
+          "description": "Campaign New UI đã prove significant uplift trên tất cả engagement metrics. Buyer Journey: Discovery → Consideration → Connecting → Dealing. Tích hợp Email/Noti/Ads vào từng stage.",
+          "results": ["Lead D0: +10.75%","Adview D0: +12.59%","Lead W1: +7.92%","Adview W1: +8.57%","% Lead: 23.02%→24.79%"],
+          "buyer_journey": ["Discovery","Consideration","Connecting","Dealing"],
+          "kpis": [], "channels": [],
+          "tasks": [
+            {"label": "Campaign New UI experiment + results measured", "status": "DONE"},
+            {"label": "Buyer Value Proposition documented per vertical", "status": "DONE"},
+            {"label": "Email + Noti integration vào buyer journey stages", "status": "IN PROGRESS"},
+            {"label": "Personalized content treatment theo buyer stage", "status": "TODO"}
+          ],
+          "blockers": [], "next_steps": [],
+          "pics": [{"name": "MKT Team","role": "MKT"},{"name": "Đức Lê","role": "Data"}]
+        },
+        {
+          "id": "video-ads", "emoji": "🎬",
+          "name": "Video Ads — Buyer & Seller",
+          "tagline": "Video format để tăng engagement + retention. Buyer tested T11, Seller paused.",
+          "status": "Not Started (2026)",
+          "description": "Video là format high-engagement phù hợp với mục tiêu P2. Buyer: đã test catalog video và 'Xem video nhận quà' (T11/2025). Seller: chưa define value prop + incentive.",
+          "buyer_done": ["Catalog test + report (T11/2025)","'Xem video nhận quà' campaign — test & operation"],
+          "seller_status": "Paused — chưa define value prop + incentive cho seller",
+          "kpis": [], "channels": [], "tasks": [],
+          "next_steps": ["Define GTM plan Video Standalone 2026 cho Buyer","Define value prop + incentive offer cho Seller video","Explore Creatomate pipeline cho Social Video automation"],
+          "blockers": [],
+          "pics": [{"name": "TBH","role": "PIC"}]
+        },
+        {
+          "id": "deeplink-profile", "emoji": "🔗",
+          "name": "Deeplink + User Profile BRD",
+          "tagline": "Fix deeplink Social→Web-in-App. User Profile feature BRD chưa viết.",
+          "status": "Blocked",
+          "description": "Deeplink từ Social chỉ mở Web-in-App (không phải native app) → friction lớn. Đã sync requirement với #ct-airbridge-mkt-protech, chờ dev confirm timeline.",
+          "kpis": [], "channels": [],
+          "tasks": [
+            {"label": "Sync requirement + example use cases với Airbridge/ProTech", "status": "DONE"},
+            {"label": "Dev confirm timeline deeplink fix — chờ response", "status": "WAITING"},
+            {"label": "Viết BRD cho User Profile feature", "status": "TODO (Chi Lê)"}
+          ],
+          "blockers": ["Dev chưa confirm timeline (expect trước Tết → bị trễ)","User Profile BRD chưa được viết — open question cho incoming PIC"],
+          "next_steps": [],
+          "pics": [{"name": "Đạt (handover)","role": "PIC"},{"name": "Airbridge team","role": "Tech"}]
+        }
+      ]
+    }
+  ],
+  "shared_tools": [
+    {
+      "id": "onflow-ucdp", "emoji": "🤖",
+      "name": "OnFlow & UCDP — incl. Email & ZNS",
+      "tagline": "Multi-channel CRM automation engine — Push Noti, Content Card, In-App, Email, ZNS, Zalo OA",
+      "status": "In Progress",
+      "description": "OnFlow là backbone của toàn bộ Growth automation. Email và ZNS là channels nằm trong OnFlow. UCDP hỗ trợ segmentation và personalization. Email experiments: JOB 13% / GDS 18% / VEH 37% open rate D1.",
+      "channels": ["Push Notification","Content Card","In-App Message","📧 Email","📲 ZNS (Zalo)","Zalo OA"],
+      "kpis": ["CTR per campaign","Email open rate","ZNS delivery rate","Conversion per channel","Segment reach"],
+      "pod_usage": {
+        "p1": ["Activation campaigns (install_7d, segment 5-19 adviews)","Onboarding sequence D1-D8","Educate features: Save, Location, Search","Email/ZNS drip fallback cho users chưa allow noti","Re-engage new users chưa activated sau D7"],
+        "p2": ["Retention flows (re-engage lapsed users)","Behavioral retargeting (Save chưa Chat)","DAU recovery campaigns","A/B experiment triggers","Email/ZNS retention: saved ads update, price alert, buyer journey stages"]
+      },
+      "tasks": [
+        {"label": "6 OnFlow campaigns activation (install_7d, segment 5-19 adviews)", "status": "DONE"},
+        {"label": "JOB + PTY Push notification plan (Binh)", "status": "DONE"},
+        {"label": "Email experiments: JOB (13%), GDS (18%), VEH (37%) open rate", "status": "TESTED"},
+        {"label": "Fix metrics sai — Charlie check với Nhung (thiếu số onflow_campaign_daily)", "status": "DOING"},
+        {"label": "Revise content — bổ sung CTR metric vào master file", "status": "DOING"},
+        {"label": "Build Email platform: advanced features (automation, A/B, dynamic content)", "status": "IN PROGRESS"},
+        {"label": "ZNS automation — hiện vẫn rất manual, cần tech build", "status": "TODO"},
+        {"label": "Email/ZNS drip automation onboarding D1-D5", "status": "TODO"}
+      ],
+      "blockers": ["Metrics sai trên OnFlow — ảnh hưởng reporting và decision making","ZNS + Email gửi tự động vẫn rất manual — cần tech build automation","UI setup cho EMAIL + OA chưa sẵn sàng để biz trigger tự động"],
+      "next_steps": [],
+      "pics": [{"name": "Đạt (handover)","role": "PIC"},{"name": "Charlie","role": "Ops"},{"name": "TBH","role": "Email PIC"},{"name": "Nhung · Trang","role": "Data"}]
+    },
+    {
+      "id": "rewards-incentives", "emoji": "🎁",
+      "name": "Rewards & Incentives — BRD",
+      "tagline": "Self-serve Promotion & Quest Engine — MKT độc lập không cần dev 4+ tuần/campaign",
+      "status": "In Progress",
+      "description": "MKT hiện không thể chạy reward campaign không có engineering. BRD finalized 11 requirements. Rewards là công cụ quan trọng để activate new behaviors ở cả P1 lẫn P2.",
+      "requirements": ["Quest Config","Segment Assignment","Voucher Distribution","Multi-Reward","Streaks & Chains","Seller Voucher","3rd-party API","Trigger & Noti","Post-Quest Flow","High-Visibility Entry","Contextual In-app"],
+      "kpis": ["Quest completion rate","DAU uplift from quests","Streak D3+ rate","Voucher redemption rate"],
+      "pod_usage": {
+        "p1": ["Activation quest: '20 adviews trong 7 ngày'","Incentivize first actions: Save, Lead, Login","Reward new users hoàn thành onboarding","Acquisition: 'Mời bạn nhận thưởng' referral"],
+        "p2": ["Daily streak mechanics (DAU habit)","View/Save/Chat streak: consecutive days","Loyalty program cho returning users","Partner vouchers contextual khi browse"]
+      },
+      "tasks": [
+        {"label": "BRD finalized — 11 requirements documented đầy đủ", "status": "DONE"},
+        {"label": "Brief Phúc Anh (Product) và bàn giao cho Lộc", "status": "DONE"},
+        {"label": "Lộc define biz requirement + cùng Product prioritize", "status": "IN PROGRESS"},
+        {"label": "Product estimate timeline và dev roadmap", "status": "WAITING"},
+        {"label": "Refactor session với Phúc Anh", "status": "TODO"}
+      ],
+      "blockers": ["Biz requirement chưa được Lộc define rõ — cần meeting ngay","Product chưa prioritize → không có dev timeline"],
+      "next_steps": [],
+      "pics": [{"name": "Lộc Võ · Chi Pu","role": "MKT"},{"name": "Phúc Anh","role": "PD"},{"name": "Đức Lê","role": "PA"}]
+    }
+  ]
+}
