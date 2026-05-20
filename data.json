@@ -13,7 +13,7 @@
       "nav_label": "📲 Pod 1 — Acquisition & Activation",
       "funnel": "L1 → L2",
       "color": "blue",
-      "project_count": 7,
+      "project_count": 5,
       "description": "App Growth toàn diện — hands-on chạy paid acquisition, explore kênh mới, đo activation quality, drive web-to-app conversion. Mục tiêu: bring in new app users có chất lượng và đảm bảo họ activate trong 7 ngày đầu.",
       "kpis": [
         "App new users (installs)",
@@ -119,7 +119,8 @@
               "name": "Đức Lê",
               "role": "Data"
             }
-          ]
+          ],
+          "channel_type": "out-app"
         },
         {
           "id": "web-to-app",
@@ -168,61 +169,8 @@
               "name": "Airbridge team",
               "role": "Tech"
             }
-          ]
-        },
-        {
-          "id": "social-acquisition",
-          "emoji": "📱",
-          "name": "Social Acquisition",
-          "tagline": "Seeding listings chất lượng lên Social channels qua N8N automation để drive app installs",
-          "status": "In Progress",
-          "description": "Facebook: 28h21'/tháng vs Chợ Tốt 4 session/tháng. Strategy: auto-post 200 quality listings (score >70)/ngày lên FB Groups, Fanpage, Zalo Groups qua N8N pipeline.",
-          "kpis": [
-            "Installs from Social",
-            "Click-to-install rate",
-            "Visitor by source",
-            "Cost per install"
           ],
-          "channels": [
-            "FB Groups",
-            "FB Page Channel",
-            "Zalo Groups",
-            "FB Ads"
-          ],
-          "tasks": [
-            {
-              "label": "N8N pipeline auto-post 200 listings/ngày — live",
-              "status": "DONE"
-            },
-            {
-              "label": "Report Fanpage SĐTCT & XLGM",
-              "status": "DONE"
-            },
-            {
-              "label": "Research & compare channels — Thuy/Trâm",
-              "status": "DOING"
-            },
-            {
-              "label": "Estimate impact/contribution per channel",
-              "status": "TODO"
-            }
-          ],
-          "blockers": [],
-          "next_steps": [],
-          "pics": [
-            {
-              "name": "Chau Vu Bao",
-              "role": "PIC"
-            },
-            {
-              "name": "Trâm Phan",
-              "role": "VEH"
-            },
-            {
-              "name": "Ngọc Lê",
-              "role": "ĐT"
-            }
-          ]
+          "channel_type": "in-app"
         },
         {
           "id": "login-signup",
@@ -275,7 +223,8 @@
               "name": "Đạt",
               "role": "Handover from"
             }
-          ]
+          ],
+          "channel_type": "in-app"
         },
         {
           "id": "app-activation",
@@ -348,7 +297,8 @@
               "name": "Kiến · Thiện",
               "role": "Data"
             }
-          ]
+          ],
+          "channel_type": "in-app"
         },
         {
           "id": "onboarding-flow",
@@ -410,7 +360,109 @@
               "name": "Nhung Phạm",
               "role": "PD"
             }
-          ]
+          ],
+          "channel_type": "in-app"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "label": "P2",
+      "name": "Engagement, Retention & Experiments",
+      "nav_label": "🔄 Pod 2 — Engagement & Retention",
+      "funnel": "L3 → L4",
+      "color": "purple",
+      "project_count": 9,
+      "description": "Own toàn bộ funnel L3→L4. Experiment architect — đề xuất và run A/B experiments tăng DAU, retention, make_lead. Primary product liaison cho ProTech. Chạy paid out-app campaigns và xây engagement mechanics dài hạn.",
+      "kpis": [
+        "D7 retention (new & current)",
+        "DAU/MAU ratio",
+        "DAU w lead (CRM source)",
+        "Experiment velocity",
+        "DAU w lead per vertical (paid)",
+        "CPA per vertical campaign"
+      ],
+      "channels": [
+        "Behavior retargeting",
+        "CRM / Push Noti",
+        "Viral & growth loops",
+        "Partnership cross-app",
+        "FB/GG Paid Digital"
+      ],
+      "note": "✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh",
+      "personnel": [
+        {
+          "role": "Senior #2",
+          "name": "TBH (handover từ Đạt)",
+          "description": "Engagement · Retention · Experiments. Own L3→L4. Experiment architect. Primary product liaison với ProTech."
+        },
+        {
+          "role": "Digital Specialist",
+          "name": "Kiet Huynh",
+          "description": "Paid ads out-app → tăng DAU w lead per vertical. Campaign management PTY, JOB, VEH, GDS."
+        },
+        {
+          "role": "Intern — Engagement",
+          "name": "Binh Nguyen Thanh",
+          "description": "CRM engagement & retention flows. Push notification execution theo brief Senior #2."
+        }
+      ],
+      "footer_note": "",
+      "projects": [
+        {
+          "id": "social-acquisition",
+          "emoji": "📱",
+          "name": "Social Acquisition",
+          "tagline": "Seeding listings chất lượng lên Social channels qua N8N automation để drive app installs",
+          "status": "In Progress",
+          "description": "Facebook: 28h21'/tháng vs Chợ Tốt 4 session/tháng. Strategy: auto-post 200 quality listings (score >70)/ngày lên FB Groups, Fanpage, Zalo Groups qua N8N pipeline.",
+          "kpis": [
+            "Installs from Social",
+            "Click-to-install rate",
+            "Visitor by source",
+            "Cost per install"
+          ],
+          "channels": [
+            "FB Groups",
+            "FB Page Channel",
+            "Zalo Groups",
+            "FB Ads"
+          ],
+          "tasks": [
+            {
+              "label": "N8N pipeline auto-post 200 listings/ngày — live",
+              "status": "DONE"
+            },
+            {
+              "label": "Report Fanpage SĐTCT & XLGM",
+              "status": "DONE"
+            },
+            {
+              "label": "Research & compare channels — Thuy/Trâm",
+              "status": "DOING"
+            },
+            {
+              "label": "Estimate impact/contribution per channel",
+              "status": "TODO"
+            }
+          ],
+          "blockers": [],
+          "next_steps": [],
+          "pics": [
+            {
+              "name": "Chau Vu Bao",
+              "role": "PIC"
+            },
+            {
+              "name": "Trâm Phan",
+              "role": "VEH"
+            },
+            {
+              "name": "Ngọc Lê",
+              "role": "ĐT"
+            }
+          ],
+          "channel_type": "out-app"
         },
         {
           "id": "chatbot-social",
@@ -500,54 +552,9 @@
               "name": "Nguyên · Nhung · Dan",
               "role": "ProTech"
             }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "p2",
-      "label": "P2",
-      "name": "Engagement, Retention & Experiments",
-      "nav_label": "🔄 Pod 2 — Engagement & Retention",
-      "funnel": "L3 → L4",
-      "color": "purple",
-      "project_count": 7,
-      "description": "Own toàn bộ funnel L3→L4. Experiment architect — đề xuất và run A/B experiments tăng DAU, retention, make_lead. Primary product liaison cho ProTech. Chạy paid out-app campaigns và xây engagement mechanics dài hạn.",
-      "kpis": [
-        "D7 retention (new & current)",
-        "DAU/MAU ratio",
-        "DAU w lead (CRM source)",
-        "Experiment velocity",
-        "DAU w lead per vertical (paid)",
-        "CPA per vertical campaign"
-      ],
-      "channels": [
-        "Behavior retargeting",
-        "CRM / Push Noti",
-        "Viral & growth loops",
-        "Partnership cross-app",
-        "FB/GG Paid Digital"
-      ],
-      "note": "✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh",
-      "personnel": [
-        {
-          "role": "Senior #2",
-          "name": "TBH (handover từ Đạt)",
-          "description": "Engagement · Retention · Experiments. Own L3→L4. Experiment architect. Primary product liaison với ProTech."
+          ],
+          "channel_type": "out-app"
         },
-        {
-          "role": "Digital Specialist",
-          "name": "Kiet Huynh",
-          "description": "Paid ads out-app → tăng DAU w lead per vertical. Campaign management PTY, JOB, VEH, GDS."
-        },
-        {
-          "role": "Intern — Engagement",
-          "name": "Binh Nguyen Thanh",
-          "description": "CRM engagement & retention flows. Push notification execution theo brief Senior #2."
-        }
-      ],
-      "footer_note": "",
-      "projects": [
         {
           "id": "campaign-performance",
           "emoji": "📊",
@@ -625,7 +632,8 @@
               "name": "Hoàng · Ngân",
               "role": "Data"
             }
-          ]
+          ],
+          "channel_type": "out-app"
         },
         {
           "id": "save-continue",
@@ -684,7 +692,8 @@
               "name": "Đạt · Đức · Trang",
               "role": "C"
             }
-          ]
+          ],
+          "channel_type": "in-app"
         },
         {
           "id": "collections-mf",
@@ -748,7 +757,8 @@
               "name": "Jacky",
               "role": "Data"
             }
-          ]
+          ],
+          "channel_type": "in-app"
         },
         {
           "id": "campaign-new-ui",
@@ -801,7 +811,8 @@
               "name": "Đức Lê",
               "role": "Data"
             }
-          ]
+          ],
+          "channel_type": "in-app"
         },
         {
           "id": "video-ads",
@@ -829,7 +840,8 @@
               "name": "TBH",
               "role": "PIC"
             }
-          ]
+          ],
+          "channel_type": "in-app"
         },
         {
           "id": "deeplink-profile",
@@ -868,7 +880,34 @@
               "name": "Airbridge team",
               "role": "Tech"
             }
-          ]
+          ],
+          "channel_type": "in-app"
+        },
+        {
+          "id": "crm-lifecycle",
+          "emoji": "📣",
+          "name": "CRM / Lifecycle MKT",
+          "tagline": "Campaigns drive DAU with lead — segmented by behavior, all verticals",
+          "status": "In Progress",
+          "channel_type": "in-app",
+          "description": "Các CRM campaigns chạy ongoing để drive DAU with lead (DwL) per vertical. Sử dụng OnFlow/UCDP để segment theo behavior (e.g. Save chưa Lead, Adview nhiều chưa Chat) và execute qua Push Noti, Email, ZNS. Phối hợp với Paid team khi có MKT campaign lớn để amplify.",
+          "kpis": [
+            "DAU with lead per vertical",
+            "CTR per campaign",
+            "Re-engagement rate",
+            "Conversion rate per segment"
+          ],
+          "channels": [
+            "Push Notification",
+            "Email",
+            "ZNS",
+            "In-app Message",
+            "Zalo OA"
+          ],
+          "tasks": [],
+          "blockers": [],
+          "next_steps": [],
+          "pics": []
         }
       ]
     }
