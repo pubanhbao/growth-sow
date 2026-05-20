@@ -272,6 +272,21 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 .pj.archived{opacity:.65;filter:grayscale(.35)}
 .upb-items{padding:0;margin:4px 0 0;line-height:1.7;font-size:12px;color:var(--text-mid)}
 .upb-item{display:flex;gap:6px;padding:1px 0}
+.ch-prog-wrap{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.ch-prog-row{border:1px solid #e2e8f0;border-radius:6px;padding:8px 10px;background:#f8fafc}
+.ch-prog-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px}
+.ch-prog-name{font-size:12px;font-weight:700;color:var(--text)}
+.ch-prog-body{display:flex;flex-direction:column;gap:3px}
+.ch-prog-bench{font-size:11px;color:var(--muted)}
+.ch-prog-next{font-size:11.5px;color:#1e40af}
+.ch-prog-block{font-size:11.5px;color:#b91c1c}
+.sm-hl{border-radius:8px;padding:10px 14px;margin-bottom:14px;border:1px solid}
+.sm-hl.p1{background:#eff6ff;border-color:#93c5fd}
+.sm-hl.p2{background:#faf5ff;border-color:#c4b5fd}
+.sm-hl-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;margin-bottom:5px}
+.sm-hl.p1 .sm-hl-lbl{color:#1e40af}
+.sm-hl.p2 .sm-hl-lbl{color:#7c3aed}
+.sm-hl-row{display:flex;flex-wrap:wrap;gap:5px;align-items:center}
 .upb-dot{color:var(--text-muted);font-weight:700}
 </style>
 </head>
@@ -331,7 +346,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">📣</span><span class="ov-proj-nm">MKT Campaigns per Vertical</span></div><div class="ov-proj-desc">Campaign brand/activation theo vertical (PTY/JOB/CTXe). Full-funnel: Brand × Growth × Design. Kênh: KOL/Influencer, Partnership, event activations.</div></div>
         <span class="ch-type-lbl in">📲 In-app</span>
         <div class="ov-proj ov-proj-link" onclick="window.open('https://pubanhbao.github.io/growth-lifecycle-marketing/','_blank')"><div class="ov-proj-top"><span class="ov-proj-em">📣</span><span class="ov-proj-nm">CRM/Lifecycle Activation — theo luồng onboarding</span></div><div class="ov-proj-desc">Dùng CRM/lifecycle (push, email, ZNS, in-app) để activate new users theo onboarding journey D1–D8. Target ≥20 adviews hoặc 1 lead trong D7. Uplift 32%→60%.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🎁</span><span class="ov-proj-nm">Rewards &amp; Quest Engine</span></div><div class="ov-proj-desc">Incentivize first actions (Save, Lead, Login) và activation quest '20 adviews D7'. BRD finalized, chờ Product prioritize.</div></div>
+        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🎁</span><span class="ov-proj-nm">Rewards &amp; Quest Engine</span></div><div class="ov-proj-desc">Incentivize first actions (Save, Lead, Login) và activation quest 'lead D7'. BRD finalized, chờ Product prioritize.</div></div>
         <span class="ch-type-lbl arch">📦 Archived</span>
         <div class="ov-proj archived"><div class="ov-proj-top"><span class="ov-proj-em">🔐</span><span class="ov-proj-nm">Login &amp; Signup (Force Login)</span></div><div class="ov-proj-desc">Uplift login MAU 7.63%→12%+. Done Q4/2024, đang maintain.</div></div>
       </div>
@@ -399,6 +414,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 
   <div class="ov-explore" style="margin-bottom:16px;">✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh</div>
 
+  <div class="sm-hl p1">
+    <div class="sm-hl-lbl">🎯 Pod 1 — Success Metrics</div>
+    <div class="sm-hl-row"><span class="kpi-chip">No. of new app DAU</span><span class="kpi-chip">x lead trong first 7 days of install</span><span class="kpi-chip">First lead trong D7 (varies by vertical &amp; segment)</span><span class="kpi-chip">% Activated D7 ≥ 50% (T6)</span></div>
+  </div>
+
   <div class="pod-page-header">
     <div class="pph-badge">P1</div>
     <div><div class="pph-title">App Acquisition &amp; Activation</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">9 projects &nbsp;·&nbsp; Senior #1: Duyen Nguyen &nbsp;·&nbsp; Digital Spec: Kiet Huynh &nbsp;·&nbsp; Intern: My Lê Ngọc Thảo</div></div>
@@ -415,24 +435,48 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="pj-top"><span class="pj-em">📦</span><div class="pj-title-wrap"><div class="pj-title">Paid App Install — PTY, JOB, GDS, VEH</div><div class="pj-subtitle">Acquire new app users với quality cao qua paid channels — 4 verticals</div></div><span class="status-badge s-doing">In Progress</span></div>
         <div class="pj-desc">Chạy paid app install campaigns cho cả 4 verticals, mỗi vertical dẫn về custom store page riêng. PTY và JOB đã active từ T1/2026 trên account mới. GDS và VEH chưa bắt đầu do chưa có brief. ASA đã paperwork xong và setup trong T2. Mục tiêu: CPI reasonable + activation rate + W1 retention đảm bảo quality.</div>
         <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">CPI reasonable vs benchmark</span><span class="kpi-chip">% Activated D7 ≥ 32%</span><span class="kpi-chip">W1 RR ≥ 30%</span><span class="kpi-chip">% Sign-up</span><span class="kpi-chip">D1 RR ≥ 30%</span></div></div>
+          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">CPI reasonable vs benchmark</span><span class="kpi-chip">% Activated D7 ≥ 32%</span><span class="kpi-chip">W1 RR ≥ 30%</span><span class="kpi-chip">% Sign-up</span><span class="kpi-chip">D1 RR ≥ 30%</span></div></div>
           <div class="pj-section"><div class="dhead">Channels</div><div class="tag-row"><span class="tag">Google UAC</span><span class="tag">Facebook/IG App</span><span class="tag">ASA</span><span class="tag">Catalog Ads</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">PTY — campaign trên account mới, dẫn về custom store</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">JOB — campaign trên account mới, dẫn về custom store</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">ASA — paperwork, email approval, setup, air 03/02</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Scale camp có RR D1 ≥ 30%, tắt camp xấu</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">ABR → DWH mapping aaid (đang investigate lệch số)</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">GDS + VEH — campaign in-app (mass_install, make_lead, adview_7d)</span><span class="todo-s ts-ns">NOT STARTED</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Clarify KPI Q2 per vertical với Đạt</span><span class="todo-s ts-ns">TODO</span></div>
+          <div class="pj-section full"><div class="dhead">Channel Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 Google UAC</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: CPI tối ưu · D1 RR ≥ 30% · W1 RR ≥ 30%</div>
+                  <div class="ch-prog-next">▶ Next week: Scale PTY/JOB camp có RR tốt · Launch GDS+VEH in-app</div>
+                  <div class="ch-prog-block">⚠ Blocker: GDS &amp; VEH chưa có brief từ vertical</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 Facebook / IG App</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: CPI reasonable · % Activated D7 ≥ 32% · D1 RR ≥ 30%</div>
+                  <div class="ch-prog-next">▶ Next week: A/B creative testing, scale camp có kết quả tốt</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 ASA (Apple Search Ads)</span><span class="todo-s ts-done">LIVE</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: CPI ≤ benchmark · D1 RR ≥ 30%</div>
+                  <div class="ch-prog-next">▶ Next week: Optimize bid &amp; keyword targeting</div>
+                  <div class="ch-prog-block">⚠ Blocker: ABR→DWH aaid mapping lệch số — đang investigate</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 Catalog Ads</span><span class="todo-s ts-ns">NOT STARTED</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: CPI reasonable · % Activated D7</div>
+                  <div class="ch-prog-next">▶ Next week: Define brief &amp; setup campaign</div>
+                  <div class="ch-prog-block">⚠ Support cần: Brief từ vertical GDS &amp; VEH</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pj-section"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">GDS &amp; VEH chưa có brief từ vertical</div><div class="blocker-item">Lệch số ABR vs GA4/DWH — đang investigate aaid mapping</div></div></div>
           <div class="pj-section"><div class="dhead">Next Steps</div><div class="next-list"><div class="next-item">Launch GDS + VEH in-app campaign</div><div class="next-item">Fix ABR→DWH mapping workflow auto</div></div></div>
         </div>
       </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">Support</span> Kiet Huynh (tạm)</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Đức Lê</div></div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Kiet Huynh</div><div class="pic-badge"><span class="pic-label-sm">DA</span> Ngan Vu</div><div class="pic-badge"><span class="pic-label-sm">Creative</span> Yen Dang</div></div>
     </div>
     <!-- P1.2 Web-to-App -->
     <div class="pj">
@@ -441,19 +485,38 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="pj-top"><span class="pj-em">🌐</span><div class="pj-title-wrap"><div class="pj-title">Web-to-App Conversion</div><div class="pj-subtitle">Tận dụng SEO/organic web traffic có high-intent, chuyển sang app install qua deeplink</div></div><span class="status-badge s-pending">Pending</span></div>
         <div class="pj-desc">Channel đã bị drop từ T6/2023. App frequency ~6 sessions/month cao gấp 4x web (~1.5/month) — converting web users sang app là high-leverage. Khi user click Social ad, Social platform mở Web-in-App (chưa login) → friction lớn. Cần deeplink route user vào đúng page trong app với logged-in state. Web traffic có intention cao hơn cold acquisition.</div>
         <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">New app users from web</span><span class="kpi-chip">Web-to-App conversion %</span><span class="kpi-chip">Deeplink success rate</span><span class="kpi-chip">% login sau install</span></div></div>
+          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">New app users from web</span><span class="kpi-chip">Web-to-App conversion %</span><span class="kpi-chip">Deeplink success rate</span><span class="kpi-chip">% login sau install</span></div></div>
           <div class="pj-section"><div class="dhead">Approach</div><div class="tag-row"><span class="tag">Smart App Banner</span><span class="tag">Deeplink routing</span><span class="tag">Display Banner</span><span class="tag">Retarget web users</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Investigate số view/impression/click bị bé với dev &amp; ABR</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Build dashboard/chart track Web→App source</span><span class="todo-s ts-ns">NOT STARTED</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">Deeplink từ Social → chỉ mở Web-in-App (chưa native app)</span><span class="todo-s ts-blocked">BLOCKED</span></div>
+          <div class="pj-section full"><div class="dhead">Approach Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔗 Deeplink Routing</span><span class="todo-s ts-blocked">BLOCKED</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: deeplink success rate ≥ 90% · CTR from web banner</div>
+                  <div class="ch-prog-next">▶ Next week: Follow Airbridge/ProTech timeline confirm</div>
+                  <div class="ch-prog-block">⚠ Blocker: Deeplink từ Social chỉ mở Web-in-App (chưa native app) — đang sync #ct-airbridge-mkt-protech</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📊 Dashboard &amp; Tracking</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Web→App source tracked accurately in DWH</div>
+                  <div class="ch-prog-next">▶ Next week: Investigate lệch số view/impression/click với dev &amp; ABR</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🎯 Retarget Web Users</span><span class="todo-s ts-ns">TODO</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Web-to-App conversion % improvement vs baseline</div>
+                  <div class="ch-prog-next">▶ Next week: Setup sau khi deeplink fix confirm</div>
+                </div>
+              </div>
             </div>
           </div>
           <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Dev fix tracking — đã có solution, chờ release &amp; test</div><div class="blocker-item">Deeplink issue: đang sync #ct-airbridge-mkt-protech, chờ dev confirm timeline</div></div></div>
         </div>
       </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">Tech</span> Airbridge team</div></div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Duyen Nguyen</div><div class="pic-badge"><span class="pic-label-sm">DA</span> Ngan Vu</div><div class="pic-badge"><span class="pic-label-sm">Creative</span> Yen Dang</div><div class="pic-badge"><span class="pic-label-sm">Rewards</span> Lộc Võ · Tracy Nguyen</div><div class="pic-badge"><span class="pic-label-sm">Product</span> Nhung Nguyen (Lucy)</div><div class="pic-badge"><span class="pic-label-sm">Tech</span> Airbridge team</div></div>
     </div>
 
     <div class="pod-sec-div pod-sec-in">📲 In-app</div>
@@ -462,30 +525,96 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="pj-stripe"></div>
       <div class="pj-main">
         <div class="pj-top"><span class="pj-em">📣</span><div class="pj-title-wrap"><div class="pj-title">CRM / Lifecycle Activation — theo luồng onboarding</div><div class="pj-subtitle">OnFlow + UCDP: guide new users từ install → aha moment qua push, email, ZNS, in-app</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Backbone của P1 activation: dùng multi-channel CRM để nurture new users theo onboarding journey D1–D8. Target: ≥20 adviews hoặc 1 lead trong D7. Uplift 32%→50% (T6)→60% (T12). See detail tại P1.5 App Activation và P1.6 Onboarding bên dưới.</div>
+        <div class="pj-desc">Backbone của P1 activation: dùng multi-channel CRM để nurture new users theo onboarding journey D1–D8. Target: ≥20 adviews hoặc 1 lead trong D7. Uplift 32%→50% (T6)→60% (T12).</div>
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">P1 Use Cases</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation campaigns: install_7d, segment 5–19 adviews</div><div class="upb-item"><span class="upb-dot">·</span>Onboarding sequence D1–D8 (Location → Save → Search → Lead)</div><div class="upb-item"><span class="upb-dot">·</span>Email/ZNS drip fallback cho users chưa allow notification</div><div class="upb-item"><span class="upb-dot">·</span>Re-engage new users chưa activated sau D7</div></div></div>
           <div class="pj-section"><div class="dhead">Channels (OnFlow)</div><div class="tag-row"><span class="tag">Push Notification</span><span class="tag">Content Card D1-D8</span><span class="tag">📧 Email drip</span><span class="tag">📲 ZNS (Zalo)</span><span class="tag">In-App Message</span></div></div>
-          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">% user_20adview D7 ≥ 50%</span><span class="kpi-chip">CTR per campaign</span><span class="kpi-chip">Email open rate D1</span><span class="kpi-chip">D1 activation uplift</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">6 OnFlow campaigns activation live (install_7d, segment 5–19 adviews)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Email experiments: JOB 13% / GDS 18% / VEH 37% open rate D1</span><span class="todo-s ts-done">TESTED</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Fix metrics sai trên OnFlow daily table (Charlie + Nhung)</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Email drip D1–D5 automation (fallback cho user chưa open noti)</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">ZNS activation automation — hiện rất manual, cần tech build</span><span class="todo-s ts-ns">TODO</span></div>
+          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">% lead D7 ≥ 50% (T6)</span><span class="kpi-chip">CTR per campaign</span><span class="kpi-chip">Email open rate D1</span><span class="kpi-chip">D1 activation uplift</span></div></div>
+          <div class="pj-section full"><div class="dhead">Channel Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔔 Push Notification</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: CTR ≥ industry avg · D1 activation uplift ≥ 15%</div>
+                  <div class="ch-prog-next">▶ Next week: Optimize timing &amp; content per segment · Scale install_7d camps</div>
+                  <div class="ch-prog-block">⚠ Blocker: Metrics sai trên OnFlow daily table — fix đang in-progress (Charlie + Nhung)</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📋 Content Card D1–D8</span><span class="todo-s ts-done">LIVE</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Impression rate ≥ 5% · Feature adoption uplift D7</div>
+                  <div class="ch-prog-next">▶ Next week: Maintain &amp; A/B test card content for D3–D5</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📧 Email Drip</span><span class="todo-s ts-ns">TODO</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Open rate ≥ 20% D1 (tested: JOB 13% / GDS 18% / VEH 37%)</div>
+                  <div class="ch-prog-next">▶ Next week: Build automation D1–D5 (fallback cho user chưa open noti)</div>
+                  <div class="ch-prog-block">⚠ Blocker: Email platform chưa có automation — cần tech build · Support: Charlie</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📲 ZNS (Zalo)</span><span class="todo-s ts-ns">TODO</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Delivery rate ≥ 95% · Activation CTR ≥ 8%</div>
+                  <div class="ch-prog-next">▶ Next week: Define use cases &amp; template với Zalo — prep for automation</div>
+                  <div class="ch-prog-block">⚠ Blocker: ZNS vẫn manual hoàn toàn — cần tech build automation · Support: ProTech</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">ZNS + Email automation vẫn manual — cần tech build</div><div class="blocker-item">Metrics sai trên OnFlow — ảnh hưởng reporting &amp; decision</div></div></div>
         </div>
       </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Duyen Nguyen</div><div class="pic-badge"><span class="pic-label-sm">Ops</span> My Lê · Binh</div><div class="pic-badge"><span class="pic-label-sm">Platform</span> Charlie</div></div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Duyen Nguyen</div><div class="pic-badge"><span class="pic-label-sm">Ops</span> My Lê · Binh</div><div class="pic-badge"><span class="pic-label-sm">Platform</span> Charlie</div><div class="pic-badge"><span class="pic-label-sm">Data</span> c. Kiên</div><div class="pic-badge"><span class="pic-label-sm">DA</span> Ngan Vu</div><div class="pic-badge"><span class="pic-label-sm">Rewards</span> Lộc Võ · Tracy Nguyen</div></div>
     </div>
-    <!-- P1.5 App Activation -->
+    <!-- P1-Rewards: Rewards & Quest Engine — Activation -->
     <div class="pj">
       <div class="pj-stripe"></div>
       <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">⚡</span><div class="pj-title-wrap"><div class="pj-title">App Activation — First 7 Days</div><div class="pj-subtitle">Target: ≥20 adviews hoặc 1 lead trong D7. Uplift 32% → 50% (T6) → 60% (T12)</div></div><span class="status-badge s-doing">In Progress</span></div>
+        <div class="pj-top"><span class="pj-em">🎁</span><div class="pj-title-wrap"><div class="pj-title">Rewards &amp; Quest Engine — Activation</div><div class="pj-subtitle">Incentivize first actions (Save, Lead, Login) và activation quest 'lead D7'</div></div><span class="status-badge s-pending">Pending Product</span></div>
+        <div class="pj-desc">P1 dùng Rewards để gamify activation: quest "lead trong D7", incentivize first-time behaviors, referral. BRD finalized 11 requirements — chờ Product prioritize. Full BRD detail tại tab Shared Tools.</div>
+        <div class="pj-grid">
+          <div class="pj-section"><div class="dhead">P1 Use Cases</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation quest: "lead trong D7"</div><div class="upb-item"><span class="upb-dot">·</span>Incentivize first actions: Save, Lead, Login</div><div class="upb-item"><span class="upb-dot">·</span>Reward new users hoàn thành onboarding D1–D7</div><div class="upb-item"><span class="upb-dot">·</span>Referral: "Mời bạn nhận thưởng"</div></div></div>
+          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">Quest completion rate</span><span class="kpi-chip">Activation uplift</span><span class="kpi-chip">Voucher redemption rate</span></div></div>
+          <div class="pj-section full"><div class="dhead">Workstream Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📄 BRD &amp; Requirements</span><span class="todo-s ts-done">DONE</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 11 requirements finalized và documented đầy đủ</div>
+                  <div class="ch-prog-next">▶ Reference: liên hệ Lộc Võ để access BRD document</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">⚙️ Product Prioritization</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Mục tiêu: Product commit timeline trước end of Q2</div>
+                  <div class="ch-prog-next">▶ Next week: Lộc define biz requirement → meeting với Phúc Anh (PD)</div>
+                  <div class="ch-prog-block">⚠ Blocker: Biz requirement chưa được define rõ · Support cần: Phúc Anh prioritize trong roadmap</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🛠️ Dev Roadmap</span><span class="todo-s ts-ns">WAITING</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Mục tiêu: Dev timeline confirmed, sprint estimate xong</div>
+                  <div class="ch-prog-block">⚠ Blocker: Phụ thuộc vào Product prioritization ở bước trên</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> Lộc Võ · Chi Pu</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Phúc Anh</div></div>
+    </div>
+
+    <div class="pod-sec-div pod-sec-arch">📦 Archived</div>
+    <!-- P1.5 App Activation -->
+    <div class="pj archived">
+      <div class="pj-stripe"></div>
+      <div class="pj-main">
+        <div class="pj-top"><span class="pj-em">⚡</span><div class="pj-title-wrap"><div class="pj-title">App Activation — First 7 Days</div><div class="pj-subtitle">Target: ≥20 adviews hoặc 1 lead trong D7. Uplift 32% → 50% (T6) → 60% (T12)</div></div><span class="status-badge s-ns">Merged into CRM</span></div>
         <div class="pj-desc">Project lớn nhất của App Growth. Hiện 32% activated (85% target). Non-activated users = 40% new users daily, 60% từ Direct. Vấn đề: search không ra kết quả relevant. Buyer activation path: Adview → Similar → Search Filter → Login → Lead → Load More. Cần kết hợp Product (onboarding), MKT (noti, ads) và Data (reco algorithm).</div>
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">% user_20adview D7</span><span class="kpi-chip">% user_1lead D7</span><span class="kpi-chip">Activation rate: 32%→50% T6</span><span class="kpi-chip">D1 RR &amp; W1 RR</span></div></div>
@@ -507,10 +636,10 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Nhung Phạm</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Kiến · Thiện</div></div>
     </div>
     <!-- P1.6 Onboarding -->
-    <div class="pj">
+    <div class="pj archived">
       <div class="pj-stripe"></div>
       <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🚀</span><div class="pj-title-wrap"><div class="pj-title">Onboarding Flow</div><div class="pj-subtitle">First-run UX: location first, educate key features cho new users D1-D8</div></div><span class="status-badge s-doing">In Progress</span></div>
+        <div class="pj-top"><span class="pj-em">🚀</span><div class="pj-title-wrap"><div class="pj-title">Onboarding Flow</div><div class="pj-subtitle">First-run UX: location first, educate key features cho new users D1-D8</div></div><span class="status-badge s-ns">Merged into CRM</span></div>
         <div class="pj-desc">Đã experiment và proven onboarding uplift activation. Approach: popup location first → educate Save → guide Search/Filter → make_lead. Vấn đề: in-app cards visibility &lt;5% impressions (cần user action), notification reach chỉ ~15% users đã allow. D1-D8 flow thiếu continuity.</div>
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">% allow notification</span><span class="kpi-chip">Location setup rate D1</span><span class="kpi-chip">Feature adoption D7</span><span class="kpi-chip">Activation rate uplift</span></div></div>
@@ -529,28 +658,6 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       </div>
       <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> TBH · My Lê</div><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Nhung Phạm</div></div>
     </div>
-    <!-- P1-Rewards: Rewards & Quest Engine — Activation -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🎁</span><div class="pj-title-wrap"><div class="pj-title">Rewards &amp; Quest Engine — Activation</div><div class="pj-subtitle">Incentivize first actions (Save, Lead, Login) và activation quest '20 adviews D7'</div></div><span class="status-badge s-pending">Pending Product</span></div>
-        <div class="pj-desc">P1 dùng Rewards để gamify activation: quest "20 adviews trong 7 ngày", incentivize first-time behaviors, referral. BRD finalized 11 requirements — chờ Product prioritize. Full BRD detail tại tab Shared Tools.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">P1 Use Cases</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation quest: "20 adviews trong 7 ngày"</div><div class="upb-item"><span class="upb-dot">·</span>Incentivize first actions: Save, Lead, Login</div><div class="upb-item"><span class="upb-dot">·</span>Reward new users hoàn thành onboarding D1–D7</div><div class="upb-item"><span class="upb-dot">·</span>Referral: "Mời bạn nhận thưởng"</div></div></div>
-          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">Quest completion rate</span><span class="kpi-chip">Activation uplift</span><span class="kpi-chip">Voucher redemption rate</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">BRD finalized — 11 requirements documented</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Lộc define biz requirement + Product prioritize</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Product estimate timeline &amp; dev roadmap</span><span class="todo-s ts-ns">WAITING</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> Lộc Võ · Chi Pu</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Phúc Anh</div></div>
-    </div>
-
-    <div class="pod-sec-div pod-sec-arch">📦 Archived</div>
     <!-- P1.4 Login & Signup -->
     <div class="pj archived">
       <div class="pj-stripe"></div>
@@ -578,6 +685,11 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 
   <div class="ov-explore" style="margin-bottom:16px;border-color:var(--p2-border);background:var(--p2-light);color:var(--p2-mid);">✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh</div>
 
+  <div class="sm-hl p2">
+    <div class="sm-hl-lbl">🎯 Pod 2 — Success Metrics</div>
+    <div class="sm-hl-row"><span class="kpi-chip">No. of adview / no. of lead</span><span class="kpi-chip">x meaningful actions after first lead</span><span class="kpi-chip">% quay lại make lead D+1/D+7/D+30 (new vs returning)</span></div>
+  </div>
+
   <div class="pod-page-header">
     <div class="pph-badge">P2</div>
     <div><div class="pph-title">Engagement, Retention &amp; Experiments</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">10 projects &nbsp;·&nbsp; Senior #2: TBH (handover từ Đạt) &nbsp;·&nbsp; Digital Spec: Kiet Huynh &nbsp;·&nbsp; Intern: Binh Nguyen</div></div>
@@ -592,77 +704,86 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
       <div class="pj-stripe"></div>
       <div class="pj-main">
         <div class="pj-top"><span class="pj-em">📊</span><div class="pj-title-wrap"><div class="pj-title">Campaign Performance — Digital Ads</div><div class="pj-subtitle">Ongoing monthly budget per vertical (DAU/DwL) + sync với Brand MKT campaign theo theme khi có</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">2 chế độ vận hành: <strong>(1) Ongoing monthly</strong> — mỗi tháng có budget allocated per vertical để chạy DAU/DwL campaigns thường xuyên (Google AWO, DWL, Facebook/IG). <strong>(2) MKT Campaign mode</strong> — khi Brand team lead một campaign lớn (vd: Tết, mid-year), Growth sync budget này để chạy cùng theme, amplify reach. Bao gồm Livestream operations (6 phiên/tháng) và push notification per vertical.</div>
+        <div class="pj-desc">2 chế độ vận hành: <strong>(1) Ongoing monthly</strong> — mỗi tháng có budget allocated per vertical để chạy DAU/DwL campaigns thường xuyên (Google AWO, DWL, Facebook/IG). <strong>(2) MKT Campaign mode</strong> — khi Brand team lead một campaign lớn (vd: Tết, mid-year), Growth sync budget này để chạy cùng theme, amplify reach. Bao gồm Livestream operations (6 phiên/tháng).</div>
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">Budget Q2 2026</div><div class="kpi-list"><span class="kpi-chip">PTY: 400M/tháng</span><span class="kpi-chip">JOB: 520M/tháng</span><span class="kpi-chip">VEH: 187M/tháng</span><span class="kpi-chip">GDS: 166M/tháng</span></div></div>
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">DAU w lead per vertical</span><span class="kpi-chip">CPA per vertical</span><span class="kpi-chip">ROAS by channel</span><span class="kpi-chip">DWL focus segment</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">PTY + JOB — KPI &amp; Budget 2026, structure campaign AWO</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">VEH Hero SKU support campaign — đã air, đang review kết quả</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Clarify KPI Q2 per vertical với Đạt</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">JOB: creative testing Facebook + push by job type</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Livestream: vận hành 6 phiên/tháng, plan Q2</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">Biz Obj 2: Tăng tỉ lệ user vào app make_lead từ Paid</span><span class="todo-s ts-blocked">PENDING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">PTY: Fix make_lead conversion goal với Dung</span><span class="todo-s ts-ns">TODO</span></div>
+          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">DAU w lead per vertical</span><span class="kpi-chip">CPA per vertical</span><span class="kpi-chip">ROAS by channel</span><span class="kpi-chip">DWL focus segment</span></div></div>
+          <div class="pj-section full"><div class="dhead">Channel Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 Google AWO / DWL</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: DAU w lead per vertical · CPA ≤ prev quarter</div>
+                  <div class="ch-prog-next">▶ Next week: PTY fix make_lead conversion goal (Dung) · Clarify Q2 KPI per vertical với Đạt</div>
+                  <div class="ch-prog-block">⚠ Pending: Biz Obj 2 — tăng make_lead từ Paid chưa được prioritize</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 Facebook / Instagram</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: ROAS by channel · DWL focus segment CPA</div>
+                  <div class="ch-prog-next">▶ Next week: JOB creative testing Facebook + targeting by job type · Scale PTY/VEH có kết quả tốt</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔵 YouTube &amp; TikTok (Retargeting)</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Retargeting CTR · View-through conversions</div>
+                  <div class="ch-prog-next">▶ Next week: Sync theme với Brand campaign khi có MKT campaign lớn</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🎙️ Livestream Operations</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: 6 phiên/tháng · Average concurrent viewers · CTA conversion</div>
+                  <div class="ch-prog-next">▶ Next week: Finalize Q2 livestream plan per vertical</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Kiet Huynh</div><div class="pic-badge"><span class="pic-label-sm">Push Noti</span> Binh Nguyen</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Hoàng · Ngân</div></div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Kiet Huynh</div><div class="pic-badge"><span class="pic-label-sm">DA</span> Ngan Vu</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Hoàng · Ngân</div></div>
     </div>
-    <!-- P1.3 Social Acquisition -->
+    <!-- P2.3 Social Acquisition & Chatbot -->
     <div class="pj">
       <div class="pj-stripe"></div>
       <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">📱</span><div class="pj-title-wrap"><div class="pj-title">Social Acquisition</div><div class="pj-subtitle">Seeding listings chất lượng lên Social channels qua N8N automation để drive app installs</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Facebook: 28h21'/tháng vs Chợ Tốt 4 session/tháng. Strategy: auto-post 200 quality listings (score &gt;70)/ngày lên FB Groups, Fanpage, Zalo Groups qua N8N pipeline. User click → vào app để make_lead hoặc install. Đang vận hành, cần estimate rõ impact để quyết định scale.</div>
+        <div class="pj-top"><span class="pj-em">📱</span><div class="pj-title-wrap"><div class="pj-title">Social Acquisition &amp; Chatbot</div><div class="pj-subtitle">Auto-post listings → drive installs + AI Chatbot FB/Zalo: detect intent → nurture → App</div></div><span class="status-badge s-doing">In Progress</span></div>
+        <div class="pj-desc">Hai workstream song song cùng mục tiêu: convert Social traffic → app install/open. <strong>Auto-post:</strong> N8N pipeline post 200 quality listings (score &gt;70)/ngày lên FB Groups, Fanpage, Zalo Groups — user click → vào app để make_lead hoặc install. <strong>Chatbot:</strong> User hỏi nhanh → được tư vấn → guided về app. Đã build basic flows, chờ deploy Production.</div>
         <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">Installs from Social</span><span class="kpi-chip">Click-to-install rate</span><span class="kpi-chip">Visitor by source</span><span class="kpi-chip">Cost per install</span></div></div>
-          <div class="pj-section"><div class="dhead">Channels Active</div><div class="tag-row"><span class="tag">FB Groups</span><span class="tag">FB Page Channel</span><span class="tag">Zalo Groups</span><span class="tag">FB Ads</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">N8N pipeline auto-post 200 listings/ngày — live</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Report Fanpage SĐTCT &amp; XLGM</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Research &amp; compare channels — Thuy/Trâm</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Estimate impact/contribution per channel</span><span class="todo-s ts-ns">TODO</span></div>
+          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">Installs from Social</span><span class="kpi-chip">Click-to-install rate</span><span class="kpi-chip">Chatbot sessions</span><span class="kpi-chip">Social → App conversion %</span></div></div>
+          <div class="pj-section"><div class="dhead">Channels</div><div class="tag-row"><span class="tag">FB Groups</span><span class="tag">FB Fanpage</span><span class="tag">Zalo Groups</span><span class="tag">FB Messenger Bot</span><span class="tag">Zalo OA Bot</span></div></div>
+          <div class="pj-section full"><div class="dhead">Approach Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🤖 Auto-Post (N8N Pipeline)</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: 200 listings/ngày · Click-to-install rate uplift vs baseline</div>
+                  <div class="ch-prog-next">▶ Next week: Estimate impact/contribution per channel (Thuy · Trâm) → quyết định scale-up</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">💬 Chatbot (FB Messenger + Zalo OA)</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Intent detection rate ≥ 80% · Social → App install CTR</div>
+                  <div class="ch-prog-next">▶ Next week: Deploy Production (follow Nguyên) · Build flows: Kinh nghiệm mua &amp; Link tải app</div>
+                  <div class="ch-prog-block">⚠ Blocker: Chờ ProTech (Nguyên) deploy Production · Memory architecture cần advise Thiện</div>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="pj-section"><div class="dhead">Chatbot Flows</div><div class="tag-row"><span class="tag">✅ Chào hỏi</span><span class="tag">✅ About CT</span><span class="tag">✅ Đăng bán</span><span class="tag">✅ Policy</span><span class="tag">❌ Kinh nghiệm mua</span><span class="tag">❌ Link tải app</span></div></div>
         </div>
       </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Chau Vu Bao</div><div class="pic-badge"><span class="pic-label-sm">VEH</span> Trâm Phan</div><div class="pic-badge"><span class="pic-label-sm">ĐT</span> Ngọc Lê</div></div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">Social</span> Chau Vu Bao · Trâm · Ngọc Lê</div><div class="pic-badge"><span class="pic-label-sm">Chatbot</span> Lộc · Thuy · Đạt</div><div class="pic-badge"><span class="pic-label-sm">ProTech</span> Nguyên · Nhung · Dan</div></div>
     </div>
-    <!-- P1.7 Chatbot on Social -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">💬</span><div class="pj-title-wrap"><div class="pj-title">Chatbot on Social</div><div class="pj-subtitle">AI Chatbot FB/Zalo: detect intent → guide mua hàng → nurture Social → App install</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Facebook 28h21'/tháng vs Chợ Tốt 4 session/tháng — Social là touchpoint quan trọng nhất để acquire. Chatbot làm "1-stop point": user hỏi nhanh → được tư vấn → guided về app. Mục tiêu cuối cùng là convert Social traffic → app install/open. Đã build basic flows, chờ deploy Production.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">Chatbot sessions</span><span class="kpi-chip">Intent detection rate</span><span class="kpi-chip">Social → App install conversion</span><span class="kpi-chip">Resolution rate</span></div></div>
-          <div class="pj-section"><div class="dhead">Flows Status</div><div class="tag-row"><span class="tag">✅ Chào hỏi</span><span class="tag">✅ About CT</span><span class="tag">✅ Đăng bán</span><span class="tag">✅ Policy</span><span class="tag">❌ Kinh nghiệm mua</span><span class="tag">❌ Link tải app</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Chào hỏi, About CT, Đăng bán, Policy flows — live</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Intent detection + classification workflow</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Deploy lên Production — follow Nguyên</span><span class="todo-s ts-doing">WAITING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Kinh nghiệm mua hàng flow</span><span class="todo-s ts-ns">CHƯA LÀM</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Link tải app / mở app từ chatbot</span><span class="todo-s ts-ns">CHƯA LÀM</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Cơ chế tự học (auto-expand use cases)</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">STOP / CONTINUE / GẶP TƯ VẤN VIÊN mechanic</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Chờ Nguyên (ProTech) deploy lên Production</div><div class="blocker-item">Chatbot memory architecture — cần advise từ Thiện</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">Brand</span> Lộc · Thuy</div><div class="pic-badge"><span class="pic-label-sm">Growth</span> Đạt</div><div class="pic-badge"><span class="pic-label-sm">ProTech</span> Nguyên · Nhung · Dan</div></div>
-
     <div class="pod-sec-div pod-sec-in">📲 In-app</div>
     <!-- P2.6 Video Ads -->
     <div class="pj">
       <div class="pj-stripe"></div>
       <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🎬</span><div class="pj-title-wrap"><div class="pj-title">Video Ads — Buyer &amp; Seller</div><div class="pj-subtitle">Video format để tăng engagement + retention. Buyer tested T11, Seller paused.</div></div><span class="status-badge s-ns">Not Started (2026)</span></div>
+        <div class="pj-top"><span class="pj-em">🎬</span><div class="pj-title-wrap"><div class="pj-title">Video Standalone &amp; Agent Showcase</div><div class="pj-subtitle">Video Standalone catalog + Agent showcase. Buyer tested T11, GTM 2026 in planning.</div></div><span class="status-badge s-ns">Not Started (2026)</span></div>
         <div class="pj-desc">Video là format high-engagement phù hợp với mục tiêu Engagement &amp; Retention của P2. Buyer: đã test catalog video và "Xem video nhận quà" (T11/2025) — kết quả promising về view-to-lead. Seller: cần video để educate và motivate seller đăng tin với quality cao hơn, chưa define được value prop + incentive. Video pipeline qua Creatomate đang explore cho Social automation.</div>
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">Buyer — Đã làm</div>
@@ -672,10 +793,34 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
             </div>
           </div>
           <div class="pj-section"><div class="dhead">Seller — Status</div><div class="blocker-list" style="margin:0;"><div class="blocker-item" style="background:var(--ns-bg);border-color:var(--ns-c);color:var(--ns-c);">Paused — chưa define value prop + incentive cho seller</div></div></div>
-          <div class="pj-section full"><div class="dhead">Next Steps</div><div class="next-list"><div class="next-item">Define GTM plan Video Standalone 2026 cho Buyer (engagement angle)</div><div class="next-item">Define value prop + incentive offer cho Seller video</div><div class="next-item">Explore Creatomate pipeline cho Social Video automation</div></div></div>
+          <div class="pj-section full"><div class="dhead">Approach Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🎬 Video Standalone — Buyer</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: View-to-lead rate · Engagement uplift vs static ads</div>
+                  <div class="ch-prog-next">▶ Next week: Define GTM plan 2026 (engagement angle) · Explore Creatomate automation pipeline</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🤝 Agent Showcase</span><span class="todo-s ts-ns">TODO</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Agent profile views · Lead quality from showcased agents</div>
+                  <div class="ch-prog-next">▶ Next week: Define format + scope với NT &amp; CTXe vertical teams</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📱 Seller Educate Video</span><span class="todo-s ts-ns">PAUSED</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Seller listing quality improvement</div>
+                  <div class="ch-prog-block">⚠ Paused: chưa define được value prop + incentive cho seller</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div></div>
+      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Kiet Huynh (temp)</div></div>
     </div>
     <!-- P2-CRM: CRM / Lifecycle MKT -->
     <div class="pj">
@@ -687,17 +832,40 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
           <div class="pj-section"><div class="dhead">P2 Use Cases</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Retention flows: re-engage lapsed users (7d, 30d inactive)</div><div class="upb-item"><span class="upb-dot">·</span>Behavioral retargeting: Save chưa Chat, adview chưa lead</div><div class="upb-item"><span class="upb-dot">·</span>DAU recovery campaigns &amp; A/B experiment triggers</div><div class="upb-item"><span class="upb-dot">·</span>Email/ZNS: saved ads update, price alert, buyer journey stages</div></div></div>
           <div class="pj-section"><div class="dhead">Channels (OnFlow)</div><div class="tag-row"><span class="tag">Push Notification</span><span class="tag">Content Card</span><span class="tag">In-App Message</span><span class="tag">📧 Email</span><span class="tag">📲 ZNS (Zalo)</span><span class="tag">Zalo OA</span></div></div>
           <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">CTR per campaign</span><span class="kpi-chip">Re-engagement rate</span><span class="kpi-chip">% quay lại make lead sau 1 tuần</span><span class="kpi-chip">DAU uplift from CRM</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">JOB + PTY push notification plans (Binh) — active</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Email/Noti buyer journey integration — Campaign New UI stages</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Bổ sung CTR metric vào master file OnFlow</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Behavioral segmentation automation (Save chưa Chat, lapsed 7d)</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">ZNS automation: price alert, saved ads update</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Build Email platform: automation, A/B, dynamic content</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+          <div class="pj-section full"><div class="dhead">Channel Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🔔 Push Notification (OnFlow)</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: CTR per campaign · Re-engagement rate D+7</div>
+                  <div class="ch-prog-next">▶ Next week: Behavioral segmentation automation (Save chưa Chat, lapsed 7d) · Bổ sung CTR metric vào master file</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📋 Content Card / In-App Message</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Impression rate · Feature adoption uplift · Buyer journey stage conversion</div>
+                  <div class="ch-prog-next">▶ Next week: Email/Noti buyer journey integration — Campaign New UI stages</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📧 Email</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Open rate ≥ 20% · Click-through rate · Re-engagement rate</div>
+                  <div class="ch-prog-next">▶ Next week: Build Email platform automation · A/B testing · Dynamic content by segment</div>
+                  <div class="ch-prog-block">⚠ Blocker: Email automation platform chưa sẵn sàng — cần tech build</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📲 ZNS / Zalo OA</span><span class="todo-s ts-ns">TODO</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Benchmark: Delivery rate ≥ 95% · Price alert CTR · Saved ads update open rate</div>
+                  <div class="ch-prog-next">▶ Next week: Define use cases (price alert, saved ads) + prep Zalo templates</div>
+                  <div class="ch-prog-block">⚠ Blocker: ZNS OA automation vẫn manual hoàn toàn — cần tech build</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">UI Email + ZNS OA chưa sẵn sàng để trigger tự động</div><div class="blocker-item">ZNS automation vẫn manual — cần tech build</div></div></div>
         </div>
       </div>
       <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH (Senior #2)</div><div class="pic-badge"><span class="pic-label-sm">Ops</span> Binh Nguyen</div><div class="pic-badge"><span class="pic-label-sm">Platform</span> Charlie · Đạt</div></div>
@@ -711,11 +879,30 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">P2 Use Cases</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Daily streak mechanics (DAU habit formation)</div><div class="upb-item"><span class="upb-dot">·</span>View/Save/Chat streak: consecutive days</div><div class="upb-item"><span class="upb-dot">·</span>Loyalty program cho returning users</div><div class="upb-item"><span class="upb-dot">·</span>Partner vouchers contextual khi browse</div></div></div>
           <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">Streak D3+ rate</span><span class="kpi-chip">DAU uplift from quests</span><span class="kpi-chip">Voucher redemption rate</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">BRD finalized — 11 requirements documented</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Lộc define biz requirement + Product prioritize</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Product estimate timeline &amp; dev roadmap</span><span class="todo-s ts-ns">WAITING</span></div>
+          <div class="pj-section full"><div class="dhead">Workstream Progress</div>
+            <div class="ch-prog-wrap">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📄 BRD &amp; Requirements</span><span class="todo-s ts-done">DONE</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 11 requirements finalized và documented đầy đủ</div>
+                  <div class="ch-prog-next">▶ Reference: liên hệ Lộc Võ để access BRD document</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">⚙️ Product Prioritization</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Mục tiêu: Product commit timeline trước end of Q2</div>
+                  <div class="ch-prog-next">▶ Next week: Lộc define biz requirement → meeting với Phúc Anh (PD)</div>
+                  <div class="ch-prog-block">⚠ Blocker: Biz requirement chưa được define rõ · Support cần: Phúc Anh prioritize trong roadmap</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">🛠️ Dev Roadmap</span><span class="todo-s ts-ns">WAITING</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">🎯 Mục tiêu: Dev timeline confirmed, sprint estimate xong</div>
+                  <div class="ch-prog-block">⚠ Blocker: Phụ thuộc vào Product prioritization ở bước trên</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -823,7 +1010,7 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
 
   <div class="pod-page-header">
     <div class="pph-badge">🔗</div>
-    <div><div class="pph-title">Shared Tools &amp; Platforms</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">2 tools · P1 &amp; P2 execution scope đã được phân vào từng pod tab — xem detail dưới đây</div></div>
+    <div><div class="pph-title">Shared Tools &amp; Platforms</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">2 tools · Hướng dẫn cách get access, cách dùng &amp; technical reference cho từng platform</div></div>
     <span class="pph-funnel">Cross-pod</span>
   </div>
 
@@ -837,26 +1024,50 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="pj-desc">OnFlow là backbone của toàn bộ Growth automation. <strong>Email và ZNS (Zalo Notification Service) là channels nằm trong OnFlow</strong> — không phải tool riêng. Master file quản lý campaigns across tất cả channels. UCDP hỗ trợ segmentation và personalization. Đã experiment Email: JOB 13% / GDS 18% / VEH 37% open rate D1. Đang fix metrics sai trên daily table.</div>
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">Channels trong OnFlow</div><div class="tag-row"><span class="tag">Push Notification</span><span class="tag">Content Card</span><span class="tag">In-App Message</span><span class="tag">📧 Email</span><span class="tag">📲 ZNS (Zalo)</span><span class="tag">Zalo OA</span></div></div>
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">CTR per campaign</span><span class="kpi-chip">Email open rate</span><span class="kpi-chip">ZNS delivery rate</span><span class="kpi-chip">Conversion per channel</span><span class="kpi-chip">Segment reach</span></div></div>
-          <div class="pj-section full"><div class="dhead">Cách 2 pods dùng</div>
+          <div class="pj-section"><div class="dhead">🔑 Get Access</div>
+            <div class="ch-prog-wrap" style="margin-top:4px">
+              <div class="ch-prog-row">
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">📋 Yêu cầu: Chotot email account + role Marketer / Campaign Manager</div>
+                  <div class="ch-prog-next">▶ Setup account: liên hệ Charlie (Ops) · Approve access: liên hệ Đạt</div>
+                  <div class="ch-prog-next">▶ Master file (all campaigns): liên hệ Charlie để get Google Sheets link · Slack: #ct-crm-onflow</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pj-section full"><div class="dhead">📋 Use Cases by Pod</div>
             <div class="shared-usage-grid">
               <div class="usage-pod-block p1-use"><div class="upb-label">Pod 1 — Acquisition &amp; Activation</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation campaigns (install_7d, segment 5-19 adviews)</div><div class="upb-item"><span class="upb-dot">·</span>Onboarding sequence D1-D8</div><div class="upb-item"><span class="upb-dot">·</span>Educate features: Save, Location, Search</div><div class="upb-item"><span class="upb-dot">·</span>Email/ZNS drip fallback cho users chưa allow noti</div><div class="upb-item"><span class="upb-dot">·</span>Re-engage new users chưa activated sau D7</div></div></div>
               <div class="usage-pod-block p2-use"><div class="upb-label">Pod 2 — Engagement &amp; Retention</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Retention flows (re-engage lapsed users)</div><div class="upb-item"><span class="upb-dot">·</span>Behavioral retargeting (Save chưa Chat)</div><div class="upb-item"><span class="upb-dot">·</span>DAU recovery campaigns</div><div class="upb-item"><span class="upb-dot">·</span>A/B experiment triggers</div><div class="upb-item"><span class="upb-dot">·</span>Email/ZNS retention: saved ads update, price alert, buyer journey stages</div></div></div>
             </div>
           </div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">6 OnFlow campaigns activation (install_7d, segment 5-19 adviews)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">JOB + PTY Push notification plan (Binh)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Email experiments: JOB (13%), GDS (18%), VEH (37%) open rate</span><span class="todo-s ts-done">TESTED</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Fix metrics sai — Charlie check với Nhung (thiếu số onflow_campaign_daily)</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Revise content — bổ sung CTR metric vào master file</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Build Email platform: advanced features (automation, A/B, dynamic content)</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">ZNS automation — hiện vẫn rất manual, cần tech build</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Email/ZNS drip automation onboarding D1-D5</span><span class="todo-s ts-ns">TODO</span></div>
+          <div class="pj-section full"><div class="dhead">⚙️ Technical Reference</div>
+            <div class="ch-prog-wrap" style="margin-top:4px">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📊 BigQuery Table</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench"><code style="font-size:11px;background:#f1f5f9;padding:1px 5px;border-radius:3px">onflow_campaign_daily</code> — daily stats per campaign: impressions, CTR, conversions, segment reach</div>
+                  <div class="ch-prog-block">⚠ Known issue: số liệu hiện đang bị sai — WIP fix (Charlie + Nhung). Không dùng cho reporting cho đến khi fix xong.</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📧 Email &amp; ZNS — Clarification</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">Email và ZNS (Zalo Notification Service) là channels NẰM TRONG OnFlow — không phải tool riêng biệt</div>
+                  <div class="ch-prog-next">▶ ZNS: gửi qua Zalo app, cần user opt-in hoặc ZNS template approval từ phía Zalo trước khi gửi</div>
+                  <div class="ch-prog-block">⚠ Current limitation: Email &amp; ZNS vẫn manual hoàn toàn — automation cần tech build (chưa có timeline)</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📈 Email Benchmark (đã test)</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">JOB: 13% open rate D1 · GDS: 18% open rate D1 · VEH: 37% open rate D1</div>
+                  <div class="ch-prog-next">▶ UCDP: segmentation portal — define audience → export Segment ID → paste vào OnFlow khi tạo campaign</div>
+                  <div class="ch-prog-next">▶ Tạo campaign mới: OnFlow → New Campaign → chọn channel → set segment (UCDP ID) → trigger condition → preview → launch</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Metrics sai trên OnFlow — ảnh hưởng reporting và decision making</div><div class="blocker-item">ZNS + Email gửi tự động vẫn rất manual — cần tech build automation</div><div class="blocker-item">UI setup cho EMAIL + OA chưa sẵn sàng để biz trigger tự động</div></div></div>
         </div>
       </div>
       <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Đạt (handover)</div><div class="pic-badge"><span class="pic-label-sm">Ops</span> Charlie</div><div class="pic-badge"><span class="pic-label-sm">Email PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Nhung · Trang</div></div>
@@ -869,22 +1080,39 @@ body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:1
         <div class="pj-grid">
           <div class="pj-section"><div class="dhead">11 Requirements</div><div class="tag-row"><span class="tag">Quest Config</span><span class="tag">Segment Assignment</span><span class="tag">Voucher Distribution</span><span class="tag">Multi-Reward</span><span class="tag">Streaks &amp; Chains</span><span class="tag">Seller Voucher</span><span class="tag">3rd-party API</span><span class="tag">Trigger &amp; Noti</span><span class="tag">Post-Quest Flow</span><span class="tag">High-Visibility Entry</span><span class="tag">Contextual In-app</span></div></div>
           <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">Quest completion rate</span><span class="kpi-chip">DAU uplift from quests</span><span class="kpi-chip">Streak D3+ rate</span><span class="kpi-chip">Voucher redemption rate</span></div></div>
-          <div class="pj-section full"><div class="dhead">Cách 2 pods dùng</div>
+          <div class="pj-section full"><div class="dhead">📋 Use Cases by Pod</div>
             <div class="shared-usage-grid">
-              <div class="usage-pod-block p1-use"><div class="upb-label">Pod 1 — Acquisition &amp; Activation</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation quest: "20 adviews trong 7 ngày"</div><div class="upb-item"><span class="upb-dot">·</span>Incentivize first actions: Save, Lead, Login</div><div class="upb-item"><span class="upb-dot">·</span>Reward new users hoàn thành onboarding</div><div class="upb-item"><span class="upb-dot">·</span>Acquisition: "Mời bạn nhận thưởng" referral</div></div></div>
+              <div class="usage-pod-block p1-use"><div class="upb-label">Pod 1 — Acquisition &amp; Activation</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation quest: "lead trong D7"</div><div class="upb-item"><span class="upb-dot">·</span>Incentivize first actions: Save, Lead, Login</div><div class="upb-item"><span class="upb-dot">·</span>Reward new users hoàn thành onboarding</div><div class="upb-item"><span class="upb-dot">·</span>Acquisition: "Mời bạn nhận thưởng" referral</div></div></div>
               <div class="usage-pod-block p2-use"><div class="upb-label">Pod 2 — Engagement &amp; Retention</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Daily streak mechanics (DAU habit)</div><div class="upb-item"><span class="upb-dot">·</span>View/Save/Chat streak: consecutive days</div><div class="upb-item"><span class="upb-dot">·</span>Loyalty program cho returning users</div><div class="upb-item"><span class="upb-dot">·</span>Partner vouchers contextual khi browse</div></div></div>
             </div>
           </div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">BRD finalized — 11 requirements documented đầy đủ</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Brief Phúc Anh (Product) và bàn giao cho Lộc</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Lộc define biz requirement + cùng Product prioritize</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Product estimate timeline và dev roadmap</span><span class="todo-s ts-ns">WAITING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Refactor session với Phúc Anh</span><span class="todo-s ts-ns">TODO</span></div>
+          <div class="pj-section"><div class="dhead">🔑 Get Access / BRD</div>
+            <div class="ch-prog-wrap" style="margin-top:4px">
+              <div class="ch-prog-row">
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">📄 Full BRD document (11 requirements detail): liên hệ Lộc Võ</div>
+                  <div class="ch-prog-next">▶ Product Owner: Phúc Anh (PD team) · Campaign planning: liên hệ Lộc Võ trực tiếp</div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Biz requirement chưa được Lộc define rõ — cần meeting ngay</div><div class="blocker-item">Product chưa prioritize → không có dev timeline</div></div></div>
+          <div class="pj-section full"><div class="dhead">📌 Build Status</div>
+            <div class="ch-prog-wrap" style="margin-top:4px">
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">📄 BRD Finalized</span><span class="todo-s ts-done">DONE</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-bench">11 requirements documented · Brief Phúc Anh xong · Bàn giao cho Lộc Võ</div>
+                </div>
+              </div>
+              <div class="ch-prog-row">
+                <div class="ch-prog-hd"><span class="ch-prog-name">⚙️ Product Prioritization</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
+                <div class="ch-prog-body">
+                  <div class="ch-prog-next">▶ Lộc define biz requirement → meeting với Phúc Anh để confirm roadmap slot</div>
+                  <div class="ch-prog-block">⚠ Blocked: Dev timeline chưa có — phụ thuộc vào Product prioritize trong Q2</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> Lộc Võ · Chi Pu</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Phúc Anh</div><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div></div>
