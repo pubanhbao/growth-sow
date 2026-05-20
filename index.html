@@ -407,18 +407,45 @@ function renderSharedTool(t){
 }
 
 // ─── OVERVIEW ────────────────────────────────────────────────────────────────
+function renderProjectGroup(projects, label, color){
+  if(!projects.length) return '';
+  const badge = label==='out-app'
+    ? `<span style="background:#fee2e2;color:#dc2626;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700">📡 OUT-APP</span>`
+    : `<span style="background:#dbeafe;color:#1e40af;padding:2px 8px;border-radius:20px;font-size:10px;font-weight:700">📲 IN-APP</span>`;
+  return `
+    <div style="margin-bottom:8px">${badge}</div>
+    <ul style="list-style:none;margin-bottom:10px">
+      ${projects.map(p=>`
+        <li style="display:flex;align-items:center;gap:6px;padding:3px 0;font-size:12.5px">
+          <span>${p.emoji}</span>
+          <span style="font-weight:500;color:#111827">${p.name}</span>
+          <span class="status-badge ${statusClass(p.status)}" style="margin-left:auto;font-size:10px">${p.status}</span>
+        </li>`).join('')}
+    </ul>`;
+}
+
 function renderOverview(data){
+  const podCards = data.pods.map(pod=>{
+    const outApp = pod.projects.filter(p=>p.channel_type==='out-app');
+    const inApp  = pod.projects.filter(p=>p.channel_type==='in-app');
+    return `
+      <div class="pod-summary ${pod.color}" style="cursor:default">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+          <div class="pod-label">${pod.label}</div>
+          <div>
+            <div style="font-size:15px;font-weight:700">${pod.name}</div>
+            <div class="funnel">${pod.funnel} · <span style="color:var(--blue);font-weight:600;cursor:pointer" onclick="showTab('${pod.id}')">${pod.project_count} projects →</span></div>
+          </div>
+        </div>
+        ${renderProjectGroup(outApp,'out-app',pod.color)}
+        ${renderProjectGroup(inApp,'in-app',pod.color)}
+        <div class="kpi-list" style="margin-top:8px">${pod.kpis.slice(0,3).map(k=>`<span class="kpi-pill ${pod.color}">${k}</span>`).join('')}</div>
+      </div>`;
+  }).join('');
+
   return `
     <div class="overview-grid">
-      ${data.pods.map(pod=>`
-        <div class="pod-summary ${pod.color}" onclick="showTab('${pod.id}')">
-          <div class="pod-label">${pod.label}</div>
-          <div class="funnel">${pod.funnel}</div>
-          <h3>${pod.name}</h3>
-          <p>${pod.description}</p>
-          <div class="count">📁 ${pod.project_count} projects</div>
-          <div class="kpi-list">${pod.kpis.slice(0,4).map(k=>`<span class="kpi-pill ${pod.color}">${k}</span>`).join('')}</div>
-        </div>`).join('')}
+      ${podCards}
       <div class="shared-overview">
         <h3>🔗 Shared Tools & Platforms</h3>
         ${data.shared_tools.map(t=>`
