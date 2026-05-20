@@ -4,779 +4,487 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Growth Team — Project Map</title>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --bg:#F7F6F3;--white:#FFFFFF;
-  --p1:#E8470A;--p1-light:#FFF3EE;--p1-border:#F9C5AA;--p1-mid:#B83500;
-  --p2:#6D28D9;--p2-light:#F3F0FF;--p2-border:#C4B5FD;--p2-mid:#5B21B6;
-  --shared:#0369A1;--shared-light:#F0F9FF;--shared-border:#BAE6FD;--shared-mid:#075985;
-  --text:#1A1A1A;--text-mid:#4B4B4B;--muted:#8A8A8A;--dim:#B0ADAA;
-  --border:#E4E2DC;--border2:#D1CEC8;
-  --done-bg:#ECFDF5;--done-c:#059669;--done-b:#A7F3D0;
-  --doing-bg:#FFFBEB;--doing-c:#D97706;--doing-b:#FDE68A;
-  --blocked-bg:#FEF2F2;--blocked-c:#DC2626;--blocked-b:#FECACA;
-  --pending-bg:#F5F3FF;--pending-c:#7C3AED;--pending-b:#DDD6FE;
-  --ns-bg:#F8FAFC;--ns-c:#64748B;--ns-b:#CBD5E1;
-  --font:'Plus Jakarta Sans',sans-serif;
-}
-body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;}
-.page-wrap{max-width:1280px;margin:0 auto;padding:0 40px;box-sizing:border-box;}
+  :root {
+    --blue: #2563eb; --blue-light: #dbeafe; --blue-dark: #1e40af;
+    --purple: #7c3aed; --purple-light: #ede9fe; --purple-dark: #5b21b6;
+    --green: #16a34a; --green-light: #dcfce7;
+    --red: #dc2626; --red-light: #fee2e2;
+    --orange: #ea580c; --orange-light: #ffedd5;
+    --yellow: #ca8a04; --yellow-light: #fef9c3;
+    --gray: #6b7280; --gray-light: #f3f4f6; --gray-50: #f9fafb;
+    --border: #e5e7eb;
+    --text: #111827; --text-muted: #6b7280;
+    --radius: 10px; --radius-sm: 6px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f0f4f8; color: var(--text); font-size: 14px; line-height: 1.5; }
+  
+  /* HEADER */
+  .header { background: linear-gradient(135deg, #1e3a5f 0%, #1a1a2e 100%); color: white; padding: 20px 32px 0; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 12px rgba(0,0,0,.3); }
+  .header-top { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .logo { width: 36px; height: 36px; background: var(--blue); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; color: white; }
+  .header-title h1 { font-size: 18px; font-weight: 700; color: white; }
+  .header-title p { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 1px; }
+  .last-updated { margin-left: auto; font-size: 11px; color: rgba(255,255,255,.45); }
+  .nav { display: flex; gap: 2px; }
+  .nav-btn { padding: 8px 16px; border: none; background: transparent; color: rgba(255,255,255,.65); cursor: pointer; font-size: 13px; font-weight: 500; border-radius: 8px 8px 0 0; transition: all .15s; white-space: nowrap; }
+  .nav-btn:hover { background: rgba(255,255,255,.1); color: white; }
+  .nav-btn.active { background: #f0f4f8; color: var(--text); font-weight: 600; }
 
-/* HEADER */
-.page-header{margin-bottom:28px;padding-top:32px;}
-.org-badge{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
-.org-icon{width:32px;height:32px;background:var(--p1);border-radius:8px;display:flex;align-items:center;justify-content:center;color:white;font-weight:700;font-size:14px;}
-.org-meta{font-size:13px;color:var(--muted);}
-.page-title{font-size:24px;font-weight:700;letter-spacing:-0.3px;margin-bottom:3px;}
-.page-sub{font-size:13px;color:var(--muted);margin-bottom:24px;}
+  /* MAIN */
+  .main { max-width: 1400px; margin: 0 auto; padding: 28px 28px; }
+  .section { display: none; }
+  .section.active { display: block; }
 
-/* NAV TABS */
-.nav-tabs{display:flex;gap:0;border-bottom:2px solid var(--border);margin-bottom:0;flex-wrap:wrap;}
-.nav-tab{padding:11px 20px;font-size:13px;font-weight:600;color:var(--muted);background:none;border:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:color .15s;display:flex;align-items:center;gap:7px;white-space:nowrap;}
-.nav-tab:hover{color:var(--text);}
-.nav-tab.active-all{color:var(--text);border-bottom-color:var(--text);}
-.nav-tab.active-p1{color:var(--p1);border-bottom-color:var(--p1);}
-.nav-tab.active-p2{color:var(--p2);border-bottom-color:var(--p2);}
-.nav-tab.active-shared{color:var(--shared);border-bottom-color:var(--shared);}
-.tab-pill{font-size:10px;padding:1px 7px;border-radius:10px;font-weight:700;}
-.pill-p1{background:var(--p1-light);color:var(--p1);}
-.pill-p2{background:var(--p2-light);color:var(--p2);}
-.pill-shared{background:var(--shared-light);color:var(--shared);}
+  /* OVERVIEW */
+  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 24px; }
+  .pod-summary { background: white; border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); cursor: pointer; transition: all .15s; }
+  .pod-summary:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(37,99,235,.1); transform: translateY(-2px); }
+  .pod-summary.blue .pod-label { background: var(--blue); }
+  .pod-summary.purple .pod-label { background: var(--purple); }
+  .pod-label { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 8px; color: white; font-weight: 800; font-size: 13px; margin-bottom: 10px; }
+  .pod-summary h3 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+  .pod-summary .funnel { font-size: 11px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; }
+  .pod-summary p { font-size: 13px; color: var(--text-muted); line-height: 1.6; margin-bottom: 12px; }
+  .pod-summary .count { font-size: 12px; font-weight: 600; color: var(--blue); }
+  .kpi-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+  .kpi-pill { background: var(--gray-light); color: var(--text); padding: 3px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .kpi-pill.blue { background: var(--blue-light); color: var(--blue-dark); }
+  .kpi-pill.purple { background: var(--purple-light); color: var(--purple-dark); }
 
-/* TAB CONTENT */
-.tab-content{display:none;}
-.tab-content{display:none;}
-.tab-content.active{display:block;max-width:1280px;margin-left:auto;margin-right:auto;padding:20px 40px 60px;box-sizing:border-box;}
-.tab-content.p2-col.active,.tab-content.shared-col.active{display:block;max-width:1280px;margin-left:auto;margin-right:auto;padding:20px 40px 60px;box-sizing:border-box;}
-.tab-content.shared-col.active{padding-top:20px;}
+  /* SHARED TOOLS OVERVIEW */
+  .shared-overview { background: white; border-radius: var(--radius); border: 1px solid var(--border); padding: 20px; }
+  .shared-overview h3 { font-size: 14px; font-weight: 700; margin-bottom: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: .5px; }
+  .tool-row { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--gray-light); }
+  .tool-row:last-child { border: none; }
+  .tool-emoji { font-size: 20px; }
+  .tool-info h4 { font-size: 13px; font-weight: 600; }
+  .tool-info p { font-size: 12px; color: var(--text-muted); }
 
-/* ── SHARED LABELS ── */
-.slabel{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--muted);margin-bottom:8px;margin-top:14px;display:block;}
-.slabel:first-child{margin-top:0;}
+  /* PROJECTS GRID */
+  .projects-header { margin-bottom: 20px; }
+  .projects-header h2 { font-size: 20px; font-weight: 800; color: var(--text); margin-bottom: 4px; }
+  .projects-header .meta { font-size: 13px; color: var(--text-muted); display: flex; gap: 12px; align-items: center; }
+  .funnel-badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .funnel-badge.blue { background: var(--blue-light); color: var(--blue-dark); }
+  .funnel-badge.purple { background: var(--purple-light); color: var(--purple-dark); }
 
-/* ══════════════════════════════
-   OVERVIEW TAB
-══════════════════════════════ */
-.mgr-wrap{display:flex;justify-content:center;margin-bottom:18px;}
-.mgr-box{border:2px solid var(--p1);padding:9px 28px;font-weight:600;font-size:14px;color:var(--p1);background:white;border-radius:8px;}
-.conn{display:flex;justify-content:center;margin-bottom:18px;position:relative;height:30px;}
-.conn::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:14px;background:var(--border2);}
-.conn::after{content:'';position:absolute;top:14px;left:calc(25% + 10px);right:calc(25% + 10px);height:2px;background:var(--border2);}
-.conn-drops{position:absolute;top:14px;left:0;right:0;display:flex;justify-content:space-between;padding:0 calc(25% + 10px);}
-.cdrop{width:2px;height:16px;background:var(--border2);}
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 18px; }
+  
+  /* PROJECT CARD */
+  .project-card { background: white; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; transition: box-shadow .15s; }
+  .project-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.08); }
+  .card-header { padding: 14px 16px 10px; border-bottom: 1px solid var(--gray-light); display: flex; align-items: flex-start; gap: 10px; }
+  .card-emoji { font-size: 22px; flex-shrink: 0; line-height: 1; margin-top: 2px; }
+  .card-title { flex: 1; }
+  .card-title h3 { font-size: 14px; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
+  .card-title .tagline { font-size: 12px; color: var(--text-muted); }
+  .status-badge { flex-shrink: 0; padding: 3px 9px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+  .status-badge.done { background: var(--green-light); color: var(--green); }
+  .status-badge.progress { background: var(--blue-light); color: var(--blue-dark); }
+  .status-badge.pending { background: var(--yellow-light); color: var(--yellow); }
+  .status-badge.blocked { background: var(--red-light); color: var(--red); }
+  .status-badge.maintain { background: #d1fae5; color: #065f46; }
+  .status-badge.ongoing { background: #e0f2fe; color: #0369a1; }
+  .status-badge.notstarted { background: var(--gray-light); color: var(--gray); }
+  .status-badge.waiting { background: var(--orange-light); color: var(--orange); }
 
-.ov-pods{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:20px;}
-.ov-pod{border-radius:14px;padding:22px;border:2px solid;}
-.ov-pod.p1{background:var(--p1-light);border-color:var(--p1-border);}
-.ov-pod.p2{background:var(--p2-light);border-color:var(--p2-border);}
+  .card-body { padding: 12px 16px; }
+  .card-desc { font-size: 12.5px; color: var(--text-muted); line-height: 1.6; margin-bottom: 10px; }
+  
+  .section-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .6px; color: var(--text-muted); margin-bottom: 5px; margin-top: 10px; }
+  
+  .pills { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 4px; }
+  .pill { padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; background: var(--gray-light); color: var(--text-muted); }
+  
+  /* TASKS */
+  .task-list { list-style: none; display: flex; flex-direction: column; gap: 3px; }
+  .task-item { display: flex; align-items: flex-start; gap: 6px; padding: 3px 0; }
+  .task-status { flex-shrink: 0; padding: 1px 7px; border-radius: 10px; font-size: 10px; font-weight: 700; margin-top: 1px; }
+  .task-status.DONE { background: var(--green-light); color: var(--green); }
+  .task-status.DOING, .task-status["IN PROGRESS"] { background: var(--blue-light); color: var(--blue-dark); }
+  .task-status.TODO { background: var(--gray-light); color: var(--gray); }
+  .task-status.BLOCKED { background: var(--red-light); color: var(--red); }
+  .task-status.WAITING { background: var(--orange-light); color: var(--orange); }
+  .task-status.PENDING { background: var(--yellow-light); color: var(--yellow); }
+  .task-label { font-size: 12px; color: var(--text); line-height: 1.4; }
+  
+  /* BLOCKERS */
+  .blockers { background: var(--red-light); border-radius: var(--radius-sm); padding: 8px 10px; margin-top: 8px; }
+  .blockers .bl-title { font-size: 10px; font-weight: 700; color: var(--red); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .blockers ul { list-style: none; }
+  .blockers li { font-size: 12px; color: #991b1b; padding: 2px 0; }
+  .blockers li::before { content: "⚠ "; }
 
-.pod-hd{display:flex;align-items:flex-start;gap:11px;margin-bottom:18px;}
-.pod-badge-sm{width:26px;height:26px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white;flex-shrink:0;margin-top:1px;}
-.p1 .pod-badge-sm{background:var(--p1);}
-.p2 .pod-badge-sm{background:var(--p2);}
-.pod-nm{font-size:15px;font-weight:700;letter-spacing:-0.2px;line-height:1.25;}
-.p1 .pod-nm{color:var(--p1);}
-.p2 .pod-nm{color:var(--p2);}
-.pod-funnel{font-size:11px;font-weight:600;color:var(--muted);margin-top:2px;}
+  /* NEXT STEPS */
+  .next-steps { background: #f0f9ff; border-radius: var(--radius-sm); padding: 8px 10px; margin-top: 8px; }
+  .next-steps .ns-title { font-size: 10px; font-weight: 700; color: #0284c7; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .next-steps ul { list-style: none; }
+  .next-steps li { font-size: 12px; color: #0369a1; padding: 2px 0; }
+  .next-steps li::before { content: "→ "; font-weight: 700; }
 
-.ov-scope{padding:12px 14px;border-radius:9px;margin-bottom:15px;font-size:12.5px;color:var(--text-mid);line-height:1.55;}
-.p1 .ov-scope{background:rgba(232,71,10,.06);border:1px solid rgba(232,71,10,.15);}
-.p2 .ov-scope{background:rgba(109,40,217,.06);border:1px solid rgba(109,40,217,.15);}
+  /* KEY DATA / RESULTS */
+  .data-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px; margin-bottom: 6px; }
+  .data-card { background: var(--gray-50); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 7px 10px; text-align: center; }
+  .data-card .val { font-size: 13px; font-weight: 700; color: var(--text); }
+  
+  /* BUDGET */
+  .budget-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px; }
+  .budget-item { background: var(--gray-50); border-radius: var(--radius-sm); padding: 6px 10px; display: flex; justify-content: space-between; align-items: center; }
+  .budget-item .vert { font-size: 11px; font-weight: 700; color: var(--text); }
+  .budget-item .amt { font-size: 11px; color: var(--blue-dark); font-weight: 600; }
 
-.kpi-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
-.kpi-p{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:500;}
-.p1 .kpi-p{background:rgba(232,71,10,.09);color:var(--p1-mid);}
-.p2 .kpi-p{background:rgba(109,40,217,.09);color:var(--p2-mid);}
+  /* JOURNEY */
+  .journey { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; margin: 4px 0; }
+  .journey-step { background: var(--purple-light); color: var(--purple-dark); padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+  .journey-arrow { color: var(--text-muted); font-size: 12px; }
 
-.ch-wrap{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:14px;}
-.ch-t{font-size:11px;padding:2px 8px;border-radius:5px;background:white;border:1px solid var(--border);color:var(--text-mid);}
+  /* REQUIREMENTS */
+  .req-grid { display: flex; flex-wrap: wrap; gap: 4px; }
+  .req-pill { background: #fef3c7; color: #92400e; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; }
 
-/* project list in overview — NO pic chip */
-.ov-proj-list{display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
-.ov-proj{background:white;border-radius:8px;padding:11px 13px;border:1px solid var(--border);}
-.ov-proj-top{display:flex;align-items:center;gap:8px;margin-bottom:3px;}
-.ov-proj-em{font-size:14px;line-height:1;}
-.ov-proj-nm{font-size:12.5px;font-weight:600;flex:1;color:var(--text);}
-.ov-proj-desc{font-size:11.5px;color:var(--muted);line-height:1.45;padding-left:22px;}
+  /* FLOWS */
+  .flows { display: flex; flex-wrap: wrap; gap: 4px; }
+  .flow-item { padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 500; }
+  .flow-item.done { background: var(--green-light); color: var(--green); }
+  .flow-item.pending { background: var(--gray-light); color: var(--gray); }
 
-.ov-explore{padding:8px 13px;background:#FFF8F5;border:1px solid var(--p1-border);border-radius:7px;font-size:11.5px;color:var(--p1-mid);font-weight:500;width:100%;box-sizing:border-box;}
+  /* OPEN QUESTIONS */
+  .open-q { background: #fffbeb; border-left: 3px solid #f59e0b; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 8px 10px; margin-top: 8px; }
+  .open-q .oq-title { font-size: 10px; font-weight: 700; color: #b45309; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .open-q li { font-size: 12px; color: #78350f; list-style: none; padding: 2px 0; }
+  .open-q li::before { content: "? "; font-weight: 700; }
 
-.ov-person-block{border-top:1px solid;padding-top:14px;margin-top:14px;}
-.p1 .ov-person-block{border-color:var(--p1-border);}
-.p2 .ov-person-block{border-color:var(--p2-border);}
-.ov-person-list{display:flex;flex-direction:column;gap:7px;}
-.ov-person{background:white;border-radius:8px;padding:10px 13px;border:1px solid var(--border);}
-.ov-prole{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:2px;}
-.p1 .ov-prole{color:var(--p1);}
-.p2 .ov-prole{color:var(--p2);}
-.spec-role{color:#9333EA;}
-.intern-role{color:var(--muted);}
-.ov-pname{font-size:12.5px;font-weight:600;color:var(--text);margin-bottom:2px;}
-.ov-pscope{font-size:11.5px;color:var(--muted);line-height:1.45;}
+  /* KEY INSIGHTS */
+  .insights { background: #f0fdf4; border-left: 3px solid var(--green); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 8px 10px; margin-top: 8px; }
+  .insights .i-title { font-size: 10px; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .insights li { font-size: 12px; color: #166534; list-style: none; }
 
-/* SHARED TOOLS — OVERVIEW */
-.ov-shared-block{border-radius:14px;padding:22px;border:2px solid var(--shared-border);background:var(--shared-light);}
-.shared-hd{display:flex;align-items:center;gap:11px;margin-bottom:16px;}
-.shared-badge{width:26px;height:26px;border-radius:6px;background:var(--shared);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:white;flex-shrink:0;}
-.shared-title{font-size:15px;font-weight:700;color:var(--shared);letter-spacing:-0.2px;}
-.shared-sub{font-size:11px;font-weight:600;color:var(--muted);margin-top:2px;}
-.shared-desc{padding:12px 14px;border-radius:9px;margin-bottom:16px;font-size:12.5px;color:var(--text-mid);line-height:1.55;background:rgba(3,105,161,.05);border:1px solid rgba(3,105,161,.12);}
+  /* PICS */
+  .pics { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--gray-light); }
+  .pic-tag { background: var(--gray-50); border: 1px solid var(--border); border-radius: 20px; padding: 2px 10px; font-size: 11px; }
+  .pic-tag .pic-name { font-weight: 600; color: var(--text); }
+  .pic-tag .pic-role { color: var(--text-muted); }
 
-.shared-tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
-.shared-tool-card{background:white;border-radius:10px;padding:14px 15px;border:1px solid var(--border);}
-.stc-icon{font-size:18px;margin-bottom:8px;}
-.stc-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
-.stc-desc{font-size:11.5px;color:var(--muted);line-height:1.45;margin-bottom:10px;}
-.stc-usage{display:flex;flex-direction:column;gap:4px;}
-.stc-pod-use{font-size:11px;line-height:1.5;padding:5px 9px;border-radius:6px;}
-.stc-pod-use.use-p1{background:var(--p1-light);color:var(--p1-mid);border:1px solid var(--p1-border);}
-.stc-pod-use.use-p2{background:var(--p2-light);color:var(--p2-mid);border:1px solid var(--p2-border);}
-.use-label{font-weight:700;margin-right:4px;}
+  /* PERSONNEL */
+  .personnel-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; margin: 16px 0; }
+  .person-card { background: white; border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 14px; }
+  .person-role { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; color: var(--text-muted); margin-bottom: 3px; }
+  .person-name { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .person-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
 
-.peers-note{margin-top:20px;padding:11px 18px;background:white;border:1px solid var(--border);border-radius:9px;font-size:12px;color:var(--muted);text-align:center;}
-.peers-note strong{color:var(--text);}
+  /* NOTE BOX */
+  .note-box { background: #fffbeb; border: 1px dashed #f59e0b; border-radius: var(--radius-sm); padding: 8px 12px; font-size: 12px; color: #78350f; margin: 12px 0; font-style: italic; }
+  .footer-note { background: var(--gray-50); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 12px; color: var(--text-muted); margin-top: 20px; }
 
-/* ══════════════════════════════
-   PROJECT DEEP-DIVE TABS
-══════════════════════════════ */
-.pod-page-header{display:flex;align-items:center;gap:12px;padding:18px 22px;border-radius:12px;margin-bottom:24px;width:100%;box-sizing:border-box;}
-.p1-col .pod-page-header{background:var(--p1-light);border:2px solid var(--p1-border);}
-.p2-col .pod-page-header{background:var(--p2-light);border:2px solid var(--p2-border);}
-.shared-col .pod-page-header{background:var(--shared-light);border:2px solid var(--shared-border);margin-bottom:16px;}
-.pph-badge{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:white;}
-.p1-col .pph-badge{background:var(--p1);}
-.p2-col .pph-badge{background:var(--p2);}
-.shared-col .pph-badge{background:var(--shared);}
-.pph-title{font-size:16px;font-weight:700;letter-spacing:-0.2px;}
-.p1-col .pph-title{color:var(--p1);}
-.p2-col .pph-title{color:var(--p2);}
-.shared-col .pph-title{color:var(--shared);}
-.pph-funnel{font-size:12px;color:var(--muted);font-weight:500;margin-left:auto;}
+  /* SHARED TOOLS SECTION */
+  .shared-tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(520px, 1fr)); gap: 20px; }
+  .pod-usage-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 8px; }
+  .pod-usage-col { background: var(--gray-50); border-radius: var(--radius-sm); padding: 8px 10px; }
+  .pod-usage-col .pu-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+  .pod-usage-col.p1 .pu-label { color: var(--blue-dark); }
+  .pod-usage-col.p2 .pu-label { color: var(--purple-dark); }
+  .pod-usage-col li { font-size: 11px; color: var(--text-muted); list-style: none; padding: 1px 0; }
+  .pod-usage-col li::before { content: "· "; }
 
-.proj-cards-grid{display:flex;flex-direction:column;gap:16px;width:100%;min-width:0;}
-
-/* section divider in deep-dive tabs */
-.section-divider{display:flex;align-items:center;gap:12px;margin:28px 0 16px;}
-.section-divider-line{flex:1;height:1px;background:var(--border);}
-.section-divider-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;padding:4px 14px;border-radius:20px;white-space:nowrap;}
-.sdl-shared{background:var(--shared-light);color:var(--shared);border:1px solid var(--shared-border);}
-
-/* shared tool reference card in pod tabs */
-.shared-ref-card{background:var(--shared-light);border:1px solid var(--shared-border);border-radius:12px;padding:16px 20px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;}
-.src-icon{font-size:22px;padding-top:2px;}
-.src-body{}
-.src-title{font-size:13.5px;font-weight:700;color:var(--shared);margin-bottom:3px;}
-.src-desc{font-size:12px;color:var(--text-mid);line-height:1.5;margin-bottom:8px;}
-.src-how{font-size:11.5px;padding:7px 11px;border-radius:7px;line-height:1.5;}
-.p1-col .src-how{background:var(--p1-light);border:1px solid var(--p1-border);color:var(--p1-mid);}
-.p2-col .src-how{background:var(--p2-light);border:1px solid var(--p2-border);color:var(--p2-mid);}
-.src-how strong{font-weight:700;}
-
-/* Project card */
-.pj{background:white;border:1px solid var(--border);border-radius:12px;overflow:hidden;width:100%;min-width:0;}
-.pj-stripe{height:3px;}
-.p1-col .pj-stripe{background:var(--p1);}
-.p2-col .pj-stripe{background:var(--p2);}
-.shared-col .pj-stripe{background:var(--shared);}
-
-.pj-main{padding:20px 22px;min-width:0;overflow:hidden;}
-.pj-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px;}
-.pj-em{font-size:20px;line-height:1;flex-shrink:0;margin-top:1px;}
-.pj-title-wrap{flex:1;}
-.pj-title{font-size:15px;font-weight:700;color:var(--text);margin-bottom:3px;letter-spacing:-0.15px;}
-.pj-subtitle{font-size:12px;color:var(--muted);line-height:1.45;}
-.status-badge{padding:3px 9px;border-radius:5px;font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;flex-shrink:0;margin-top:2px;}
-.s-done{background:var(--done-bg);color:var(--done-c);border:1px solid var(--done-b);}
-.s-doing{background:var(--doing-bg);color:var(--doing-c);border:1px solid var(--doing-b);}
-.s-blocked{background:var(--blocked-bg);color:var(--blocked-c);border:1px solid var(--blocked-b);}
-.s-pending{background:var(--pending-bg);color:var(--pending-c);border:1px solid var(--pending-b);}
-.s-ns{background:var(--ns-bg);color:var(--ns-c);border:1px solid var(--ns-b);}
-
-.pj-desc{font-size:13px;color:var(--text-mid);line-height:1.6;margin-bottom:16px;}
-.pj-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;min-width:0;}
-.pj-section{display:flex;flex-direction:column;gap:6px;min-width:0;}
-.pj-section.full{grid-column:1/-1;}
-.dhead{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--dim);margin-bottom:2px;}
-
-.kpi-list{display:flex;flex-wrap:wrap;gap:4px;}
-.kpi-chip{font-size:11px;padding:2px 8px;border-radius:4px;background:#F1F5F9;color:#475569;border:1px solid #E2E8F0;}
-
-.todo-list{display:flex;flex-direction:column;gap:4px;}
-.todo-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;line-height:1.5;}
-.todo-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:4px;}
-.td-done .todo-dot{background:var(--done-c);}
-.td-doing .todo-dot{background:var(--doing-c);}
-.td-ns .todo-dot{background:var(--ns-c);}
-.td-blocked .todo-dot{background:var(--blocked-c);}
-.todo-txt{flex:1;color:var(--text-mid);}
-.todo-s{font-size:9.5px;font-family:monospace;padding:1px 4px;border-radius:3px;flex-shrink:0;margin-top:2px;}
-.ts-done{background:var(--done-bg);color:var(--done-c);}
-.ts-doing{background:var(--doing-bg);color:var(--doing-c);}
-.ts-ns{background:var(--ns-bg);color:var(--ns-c);}
-.ts-blocked{background:var(--blocked-bg);color:var(--blocked-c);}
-
-.blocker-list{display:flex;flex-direction:column;gap:4px;}
-.blocker-item{padding:6px 10px;background:var(--blocked-bg);border-left:2px solid var(--blocked-c);font-size:12px;color:#7F1D1D;line-height:1.45;}
-.next-list{display:flex;flex-direction:column;gap:4px;}
-.next-item{padding:6px 10px;background:#F0FDF4;border-left:2px solid var(--done-c);font-size:12px;color:#14532D;line-height:1.45;}
-
-.pj-footer{padding:10px 22px;background:var(--bg);border-top:1px solid var(--border);display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
-.pic-badge{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-mid);}
-.pic-label-sm{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--dim);}
-
-.note-box{padding:8px 12px;border-radius:7px;font-size:12px;line-height:1.5;margin-top:10px;}
-.note-insight{background:#FFFBEB;border:1px solid #FDE68A;color:#92400E;}
-.note-data{background:#EFF6FF;border:1px solid #BFDBFE;color:#1E3A8A;}
-
-.tag-row{display:flex;flex-wrap:wrap;gap:4px;}
-.tag{font-size:10.5px;padding:2px 7px;border-radius:4px;background:var(--bg);border:1px solid var(--border);color:var(--text-mid);}
-
-/* shared tab special styles */
-.shared-col .pj-stripe{background:var(--shared);}
-.shared-usage-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:4px;}
-.usage-pod-block{padding:10px 12px;border-radius:8px;}
-.usage-pod-block.p1-use{background:var(--p1-light);border:1px solid var(--p1-border);}
-.usage-pod-block.p2-use{background:var(--p2-light);border:1px solid var(--p2-border);}
-.upb-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;}
-.p1-use .upb-label{color:var(--p1);}
-.p2-use .upb-label{color:var(--p2);}
-.upb-items{display:flex;flex-direction:column;gap:3px;}
-.upb-item{font-size:11.5px;color:var(--text-mid);line-height:1.45;display:flex;gap:5px;}
-.upb-dot{color:var(--dim);flex-shrink:0;}
-
-@media(max-width:860px){
-  .page-header{padding:20px 20px 0;}
-  .nav-tabs{padding:0 20px;}
-  .tab-content.active,.tab-content.p2-col.active,.tab-content.shared-col.active{padding:20px 20px 40px;}
-  .ov-pods,.pj-grid,.shared-tools-grid,.shared-usage-grid{grid-template-columns:1fr;}
-  .pj-grid .pj-section.full{grid-column:1;}
-}
+  /* DIVIDER */
+  .divider { height: 1px; background: var(--border); margin: 24px 0; }
 </style>
 </head>
 <body>
-<div class="page-wrap">
 
-<!-- HEADER -->
-<div class="page-header">
-  <div class="org-badge">
-    <div class="org-icon">G</div>
-    <span class="org-meta">Growth Team &nbsp;·&nbsp; 7 người &nbsp;·&nbsp; 2 pods &nbsp;·&nbsp; Full-stack App Growth</span>
+<div class="header">
+  <div class="header-top">
+    <div class="logo">G</div>
+    <div class="header-title">
+      <h1 id="site-title">Growth Team — Project Map</h1>
+      <p id="site-subtitle">Loading...</p>
+    </div>
+    <div class="last-updated" id="last-updated"></div>
   </div>
-  <div class="page-title">Project Map &amp; Scope of Work</div>
+  <div class="nav" id="nav"></div>
 </div>
 
-<!-- NAV TABS -->
-<nav class="nav-tabs">
-  <button class="nav-tab active-all" onclick="switchTab('overview',this)">📋 Overview SoW</button>
-  <button class="nav-tab" onclick="switchTab('pod1',this)">📲 Pod 1 — Acquisition &amp; Activation <span class="tab-pill pill-p1">7 projects</span></button>
-  <button class="nav-tab" onclick="switchTab('pod2',this)">🔄 Pod 2 — Engagement &amp; Retention <span class="tab-pill pill-p2">7 projects</span></button>
-  <button class="nav-tab" onclick="switchTab('shared',this)">🔗 Shared Tools &amp; Platforms <span class="tab-pill pill-shared">2 tools</span></button>
-</nav>
-
-
-<!-- ════════════════════════════════════
-     TAB: OVERVIEW
-════════════════════════════════════ -->
-<div id="tab-overview" class="tab-content active">
-
-  <div class="mgr-wrap"><div class="mgr-box">MKT Manager</div></div>
-  <div class="conn"><div class="conn-drops"><div class="cdrop"></div><div class="cdrop"></div></div></div>
-
-  <div class="ov-pods">
-
-    <!-- POD 1 -->
-    <div class="ov-pod p1">
-      <div class="pod-hd">
-        <div class="pod-badge-sm">P1</div>
-        <div><div class="pod-nm">App Acquisition &amp; Activation</div><div class="pod-funnel">L1 → L2</div></div>
-      </div>
-      <div class="ov-scope">App Growth toàn diện — hands-on chạy paid acquisition, explore kênh mới, đo activation quality, drive web-to-app conversion. Mục tiêu: bring in new app users có chất lượng và đảm bảo họ activate trong 7 ngày đầu.</div>
-      <span class="slabel">KPIs</span>
-      <div class="kpi-wrap"><span class="kpi-p">App new users (installs)</span><span class="kpi-p">D1 retention rate</span><span class="kpi-p">% Activated ≥20 adviews D7</span><span class="kpi-p">CPI vs benchmark</span><span class="kpi-p">Web-to-app conversion rate</span><span class="kpi-p">% Sign-up W1</span></div>
-      <span class="slabel">Channels</span>
-      <div class="ch-wrap"><span class="ch-t">Google UAC</span><span class="ch-t">FB/IG App</span><span class="ch-t">ASA</span><span class="ch-t">App Store Pages</span><span class="ch-t">TikTok Ads</span><span class="ch-t">Affiliate · Referral</span><span class="ch-t">Web-to-app</span><span class="ch-t">Social Seeding (N8N)</span></div>
-      <span class="slabel">Projects</span>
-      <div class="ov-proj-list">
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">📦</span><span class="ov-proj-nm">Paid App Install — PTY, JOB, GDS, VEH</span></div><div class="ov-proj-desc">Campaign install app 4 verticals. PTY &amp; JOB active, GDS &amp; VEH chưa start.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🌐</span><span class="ov-proj-nm">Web-to-App Conversion</span></div><div class="ov-proj-desc">Convert SEO/organic web traffic sang app install qua deeplink + banner.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">📱</span><span class="ov-proj-nm">Social Acquisition</span></div><div class="ov-proj-desc">Auto-seed 200 quality listings/ngày lên FB Groups, Fanpage, Zalo qua N8N.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🔐</span><span class="ov-proj-nm">Login &amp; Signup (Force Login)</span></div><div class="ov-proj-desc">Uplift login MAU 7.63%→12%+. Done Q4/2024, đang maintain.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">⚡</span><span class="ov-proj-nm">App Activation — First 7 Days</span></div><div class="ov-proj-desc">Target ≥20 adviews hoặc 1 lead trong D7. Uplift 32%→50% (T6)→60% (T12).</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🚀</span><span class="ov-proj-nm">Onboarding Flow</span></div><div class="ov-proj-desc">First-run UX: location popup, key feature education. Đã proven uplift activation.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">💬</span><span class="ov-proj-nm">Chatbot on Social</span></div><div class="ov-proj-desc">AI Chatbot FB/Zalo: detect intent → guide mua hàng → nurture Social→App install.</div></div>
-      </div>
-      <div class="ov-person-block">
-        <span class="slabel">Personnel</span>
-        <div class="ov-person-list">
-          <div class="ov-person"><div class="ov-prole">Senior #1</div><div class="ov-pname">TBH</div><div class="ov-pscope">App Acquisition · L1→L2 · Web-to-app. Owns paid install campaigns, ASA, activation dashboard, onboarding.</div></div>
-          <div class="ov-person"><div class="ov-prole intern-role">Intern — Acquisition</div><div class="ov-pname">My Lê Ngọc Thảo</div><div class="ov-pscope">Set up &amp; monitor CRM acquisition &amp; activation flows theo brief Senior #1.</div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- POD 2 -->
-    <div class="ov-pod p2">
-      <div class="pod-hd">
-        <div class="pod-badge-sm">P2</div>
-        <div><div class="pod-nm">Engagement, Retention &amp; Experiments</div><div class="pod-funnel">L3 → L4</div></div>
-      </div>
-      <div class="ov-scope">Own toàn bộ funnel L3→L4. Experiment architect — đề xuất và run A/B experiments tăng DAU, retention, make_lead. Primary product liaison cho ProTech. Chạy paid out-app campaigns và xây engagement mechanics dài hạn.</div>
-      <span class="slabel">KPIs</span>
-      <div class="kpi-wrap"><span class="kpi-p">D7 retention (new &amp; current)</span><span class="kpi-p">DAU/MAU ratio</span><span class="kpi-p">DAU w lead (CRM source)</span><span class="kpi-p">Experiment velocity</span><span class="kpi-p">DAU w lead per vertical (paid)</span><span class="kpi-p">CPA per vertical campaign</span></div>
-      <span class="slabel">Channels</span>
-      <div class="ch-wrap"><span class="ch-t">Behavior retargeting</span><span class="ch-t">CRM / Push Noti</span><span class="ch-t">Viral &amp; growth loops</span><span class="ch-t">Partnership cross-app</span><span class="ch-t">FB/GG Paid Digital</span></div>
-      <span class="slabel">Projects</span>
-      <div class="ov-proj-list">
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">📊</span><span class="ov-proj-nm">Campaign Performance — Digital Ads</span></div><div class="ov-proj-desc">Ongoing monthly budget per vertical (DAU/DwL) + sync với Brand campaign theo theme khi có MKT campaign.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">💾</span><span class="ov-proj-nm">Save &amp; Continue — Feature Optimization</span></div><div class="ov-proj-desc">Optimize Save Ad + Save Search UX. Users w/ Save → lead 46.7% vs no save 22.1%.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">📂</span><span class="ov-proj-nm">Collections &amp; MF-Experience</span></div><div class="ov-proj-desc">"My-self" behaviors: My Assets, My Activities, My Good Deals, Nearby.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">✨</span><span class="ov-proj-nm">Campaign New UI + Buyer Journey</span></div><div class="ov-proj-desc">New UI proven: Lead +10.75%, Adview +12.59%. Buyer journey integration ongoing.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🎬</span><span class="ov-proj-nm">Video Ads — Buyer &amp; Seller</span></div><div class="ov-proj-desc">Buyer catalog video (tested T11). Seller paused. GTM plan 2026 chưa start.</div></div>
-        <div class="ov-proj"><div class="ov-proj-top"><span class="ov-proj-em">🔗</span><span class="ov-proj-nm">Deeplink + User Profile BRD</span></div><div class="ov-proj-desc">Fix deeplink Social→Web-in-App issue. User Profile BRD chưa viết.</div></div>
-      </div>
-      <div class="ov-person-block">
-        <span class="slabel">Personnel</span>
-        <div class="ov-person-list">
-          <div class="ov-person"><div class="ov-prole">Senior #2</div><div class="ov-pname">TBH (handover từ Đạt)</div><div class="ov-pscope">Engagement · Retention · Experiments. Own L3→L4. Experiment architect. Primary product liaison với ProTech.</div></div>
-          <div class="ov-person"><div class="ov-prole spec-role">Digital Specialist</div><div class="ov-pname">Kiet Huynh</div><div class="ov-pscope">Paid ads out-app → tăng DAU w lead per vertical. Campaign management PTY, JOB, VEH, GDS.</div></div>
-          <div class="ov-person"><div class="ov-prole intern-role">Intern — Engagement</div><div class="ov-pname">Binh Nguyen Thanh</div><div class="ov-pscope">CRM engagement &amp; retention flows. Push notification execution theo brief Senior #2.</div></div>
-        </div>
-      </div>
-    </div>
-
-  </div><!-- end ov-pods -->
-
-  <div class="peers-note">👥 &nbsp;<strong>Both peers — same reporting line to MKT Manager.</strong>&nbsp; Senior #1 và Senior #2 report trực tiếp lên MKT Manager. Collaborate trên cross-pod experiments &amp; budget planning.</div>
-
-</div><!-- end tab-overview -->
-
-
-<!-- ════════════════════════════════════
-     TAB: POD 1
-════════════════════════════════════ -->
-<div id="tab-pod1" class="tab-content p1-col">
-
-  <div class="ov-explore" style="margin-bottom:16px;">✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh</div>
-
-  <div class="pod-page-header">
-    <div class="pph-badge">P1</div>
-    <div><div class="pph-title">App Acquisition &amp; Activation</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">7 projects &nbsp;·&nbsp; Senior #1: TBH &nbsp;·&nbsp; Intern: My Lê Ngọc Thảo</div></div>
-    <span class="pph-funnel">L1 → L2</span>
-  </div>
-
-  <div class="proj-cards-grid">
-
-    <!-- P1.1 Paid App Install -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">📦</span><div class="pj-title-wrap"><div class="pj-title">Paid App Install — PTY, JOB, GDS, VEH</div><div class="pj-subtitle">Acquire new app users với quality cao qua paid channels — 4 verticals</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Chạy paid app install campaigns cho cả 4 verticals, mỗi vertical dẫn về custom store page riêng. PTY và JOB đã active từ T1/2026 trên account mới. GDS và VEH chưa bắt đầu do chưa có brief. ASA đã paperwork xong và setup trong T2. Mục tiêu: CPI reasonable + activation rate + W1 retention đảm bảo quality.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">CPI reasonable vs benchmark</span><span class="kpi-chip">% Activated D7 ≥ 32%</span><span class="kpi-chip">W1 RR ≥ 30%</span><span class="kpi-chip">% Sign-up</span><span class="kpi-chip">D1 RR ≥ 30%</span></div></div>
-          <div class="pj-section"><div class="dhead">Channels</div><div class="tag-row"><span class="tag">Google UAC</span><span class="tag">Facebook/IG App</span><span class="tag">ASA</span><span class="tag">Catalog Ads</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">PTY — campaign trên account mới, dẫn về custom store</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">JOB — campaign trên account mới, dẫn về custom store</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">ASA — paperwork, email approval, setup, air 03/02</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Scale camp có RR D1 ≥ 30%, tắt camp xấu</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">ABR → DWH mapping aaid (đang investigate lệch số)</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">GDS + VEH — campaign in-app (mass_install, make_lead, adview_7d)</span><span class="todo-s ts-ns">NOT STARTED</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Clarify KPI Q2 per vertical với Đạt</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-          <div class="pj-section"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">GDS &amp; VEH chưa có brief từ vertical</div><div class="blocker-item">Lệch số ABR vs GA4/DWH — đang investigate aaid mapping</div></div></div>
-          <div class="pj-section"><div class="dhead">Next Steps</div><div class="next-list"><div class="next-item">Launch GDS + VEH in-app campaign</div><div class="next-item">Fix ABR→DWH mapping workflow auto</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">Support</span> Kiet Huynh (tạm)</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Đức Lê</div></div>
-    </div>
-
-    <!-- P1.2 Web-to-App -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🌐</span><div class="pj-title-wrap"><div class="pj-title">Web-to-App Conversion</div><div class="pj-subtitle">Tận dụng SEO/organic web traffic có high-intent, chuyển sang app install qua deeplink</div></div><span class="status-badge s-pending">Pending</span></div>
-        <div class="pj-desc">Channel đã bị drop từ T6/2023. App frequency ~6 sessions/month cao gấp 4x web (~1.5/month) — converting web users sang app là high-leverage. Khi user click Social ad, Social platform mở Web-in-App (chưa login) → friction lớn. Cần deeplink route user vào đúng page trong app với logged-in state. Web traffic có intention cao hơn cold acquisition.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">New app users from web</span><span class="kpi-chip">Web-to-App conversion %</span><span class="kpi-chip">Deeplink success rate</span><span class="kpi-chip">% login sau install</span></div></div>
-          <div class="pj-section"><div class="dhead">Approach</div><div class="tag-row"><span class="tag">Smart App Banner</span><span class="tag">Deeplink routing</span><span class="tag">Display Banner</span><span class="tag">Retarget web users</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Investigate số view/impression/click bị bé với dev &amp; ABR</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Build dashboard/chart track Web→App source</span><span class="todo-s ts-ns">NOT STARTED</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">Deeplink từ Social → chỉ mở Web-in-App (chưa native app)</span><span class="todo-s ts-blocked">BLOCKED</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Dev fix tracking — đã có solution, chờ release &amp; test</div><div class="blocker-item">Deeplink issue: đang sync #ct-airbridge-mkt-protech, chờ dev confirm timeline</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">Tech</span> Airbridge team</div></div>
-    </div>
-
-    <!-- P1.3 Social Acquisition -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">📱</span><div class="pj-title-wrap"><div class="pj-title">Social Acquisition</div><div class="pj-subtitle">Seeding listings chất lượng lên Social channels qua N8N automation để drive app installs</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Facebook: 28h21'/tháng vs Chợ Tốt 4 session/tháng. Strategy: auto-post 200 quality listings (score &gt;70)/ngày lên FB Groups, Fanpage, Zalo Groups qua N8N pipeline. User click → vào app để make_lead hoặc install. Đang vận hành, cần estimate rõ impact để quyết định scale.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">Installs from Social</span><span class="kpi-chip">Click-to-install rate</span><span class="kpi-chip">Visitor by source</span><span class="kpi-chip">Cost per install</span></div></div>
-          <div class="pj-section"><div class="dhead">Channels Active</div><div class="tag-row"><span class="tag">FB Groups</span><span class="tag">FB Page Channel</span><span class="tag">Zalo Groups</span><span class="tag">FB Ads</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">N8N pipeline auto-post 200 listings/ngày — live</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Report Fanpage SĐTCT &amp; XLGM</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Research &amp; compare channels — Thuy/Trâm</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Estimate impact/contribution per channel</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Chau Vu Bao</div><div class="pic-badge"><span class="pic-label-sm">VEH</span> Trâm Phan</div><div class="pic-badge"><span class="pic-label-sm">ĐT</span> Ngọc Lê</div></div>
-    </div>
-
-    <!-- P1.4 Login & Signup -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🔐</span><div class="pj-title-wrap"><div class="pj-title">Login &amp; Signup (Force Login)</div><div class="pj-subtitle">Uplift % login MAU từ 7.63% → 12%+. Done Q4/2024, đang maintain.</div></div><span class="status-badge s-done">Done / Maintain</span></div>
-        <div class="pj-desc">Project quan trọng nhất 2025. 2 force login triggers: (1) khi user make_lead, (2) khi &gt;5 adview/ngày. Post-login: content cards D1-D2 educate Location + Save. Hiện maintain mode — không drive login thêm. Google Authentication chưa implement do Tech constraint.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs đã đạt</div><div class="kpi-list"><span class="kpi-chip">Login MAU: 7.63% → ~10%</span><span class="kpi-chip">Force Login Lead: +171k MAU</span><span class="kpi-chip">Force Login Adview: +90k MAU</span><span class="kpi-chip">Target Q4: 12%</span></div></div>
-          <div class="pj-section"><div class="dhead">Đã làm</div><div class="tag-row"><span class="tag">Force Login Lead</span><span class="tag">Force Login Adview</span><span class="tag">Content Cards D1-D2</span><span class="tag">Login Campaign</span></div></div>
-          <div class="pj-section full"><div class="dhead">Open Questions cho Chi Lê</div><div class="blocker-list"><div class="blocker-item">2026 strategy: maintain ~10% hay tiếp tục drive lên 12%+?</div><div class="blocker-item">Google Auth nên unblock không? Cần check ProTech feasibility.</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Đoàn</div><div class="pic-badge"><span class="pic-label-sm">Handover from</span> Đạt</div></div>
-    </div>
-
-    <!-- P1.5 App Activation -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">⚡</span><div class="pj-title-wrap"><div class="pj-title">App Activation — First 7 Days</div><div class="pj-subtitle">Target: ≥20 adviews hoặc 1 lead trong D7. Uplift 32% → 50% (T6) → 60% (T12)</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Project lớn nhất của App Growth. Hiện 32% activated (85% target). Non-activated users = 40% new users daily, 60% từ Direct. Vấn đề: search không ra kết quả relevant. Buyer activation path: Adview → Similar → Search Filter → Login → Lead → Load More. Cần kết hợp Product (onboarding), MKT (noti, ads) và Data (reco algorithm).</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">% user_20adview D7</span><span class="kpi-chip">% user_1lead D7</span><span class="kpi-chip">Activation rate: 32%→50% T6</span><span class="kpi-chip">D1 RR &amp; W1 RR</span></div></div>
-          <div class="pj-section"><div class="dhead">Channels</div><div class="tag-row"><span class="tag">OnFlow Popup (6 camps)</span><span class="tag">Digital Retarget install_7d</span><span class="tag">Push Notification</span><span class="tag">Content Cards D1-D2</span><span class="tag">Email/ZNS (manual)</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Activation dashboard (% user_20adview)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">OnFlow 6 campaigns (segment 5-19 adviews)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">PROD Analysis "How to activate new user in first 7 days" — hoàn thành</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Activation tooltips — define content cho từng action</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Dashboard breakdown by acquisition source + activation campaign</span><span class="todo-s ts-ns">NOT STARTED</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Survey D7 (2-3 câu cho user chưa đủ 20 adviews)</span><span class="todo-s ts-ns">NOT STARTED</span></div>
-            </div>
-          </div>
-          <div class="pj-section"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">ZNS + Email chưa auto — cần email platform mới</div><div class="blocker-item">Product onboarding improvement ở Product side (Nhung)</div></div></div>
-          <div class="pj-section"><div class="dhead">Key Insight</div><div class="note-box note-data">Distinctive activation: Chat → Save Features → Follow profile → Lead → interact video. Users "Save" = highest diff. giữa high &amp; low RR.</div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Nhung Phạm</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Kiến · Thiện</div></div>
-    </div>
-
-    <!-- P1.6 Onboarding -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🚀</span><div class="pj-title-wrap"><div class="pj-title">Onboarding Flow</div><div class="pj-subtitle">First-run UX: location first, educate key features cho new users D1-D8</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Đã experiment và proven onboarding uplift activation. Approach: popup location first → educate Save → guide Search/Filter → make_lead. Vấn đề: in-app cards visibility &lt;5% impressions (cần user action), notification reach chỉ ~15% users đã allow. D1-D8 flow thiếu continuity.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">% allow notification</span><span class="kpi-chip">Location setup rate D1</span><span class="kpi-chip">Feature adoption D7</span><span class="kpi-chip">Activation rate uplift</span></div></div>
-          <div class="pj-section"><div class="dhead">Channels</div><div class="tag-row"><span class="tag">Popup onboarding</span><span class="tag">Content Cards D1-D8</span><span class="tag">Push Noti</span><span class="tag">Email drip (todo)</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Popup onboarding flow (location first) — live</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Research post-launch + experiment result — FINAL</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Content cards D1-D2: Educate Location, Save</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Product (Nhung) discovery — propose solutions improve journey</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Email drip series D1-D5 (fallback cho user chưa open noti)</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Test incentive nhẹ bật noti (badge, xu, mini event)</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> TBH · My Lê</div><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Nhung Phạm</div></div>
-    </div>
-
-    <!-- P1.7 Chatbot on Social -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">💬</span><div class="pj-title-wrap"><div class="pj-title">Chatbot on Social</div><div class="pj-subtitle">AI Chatbot FB/Zalo: detect intent → guide mua hàng → nurture Social → App install</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Facebook 28h21'/tháng vs Chợ Tốt 4 session/tháng — Social là touchpoint quan trọng nhất để acquire. Chatbot làm "1-stop point": user hỏi nhanh → được tư vấn → guided về app. Mục tiêu cuối cùng là convert Social traffic → app install/open. Đã build basic flows, chờ deploy Production.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">Chatbot sessions</span><span class="kpi-chip">Intent detection rate</span><span class="kpi-chip">Social → App install conversion</span><span class="kpi-chip">Resolution rate</span></div></div>
-          <div class="pj-section"><div class="dhead">Flows Status</div><div class="tag-row"><span class="tag">✅ Chào hỏi</span><span class="tag">✅ About CT</span><span class="tag">✅ Đăng bán</span><span class="tag">✅ Policy</span><span class="tag">❌ Kinh nghiệm mua</span><span class="tag">❌ Link tải app</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Chào hỏi, About CT, Đăng bán, Policy flows — live</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Intent detection + classification workflow</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Deploy lên Production — follow Nguyên</span><span class="todo-s ts-doing">WAITING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Kinh nghiệm mua hàng flow</span><span class="todo-s ts-ns">CHƯA LÀM</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Link tải app / mở app từ chatbot</span><span class="todo-s ts-ns">CHƯA LÀM</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Cơ chế tự học (auto-expand use cases)</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">STOP / CONTINUE / GẶP TƯ VẤN VIÊN mechanic</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Chờ Nguyên (ProTech) deploy lên Production</div><div class="blocker-item">Chatbot memory architecture — cần advise từ Thiện</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">Brand</span> Lộc · Thuy</div><div class="pic-badge"><span class="pic-label-sm">Growth</span> Đạt</div><div class="pic-badge"><span class="pic-label-sm">ProTech</span> Nguyên · Nhung · Dan</div></div>
-    </div>
-
-    </div>
-
-  </div><!-- end proj-cards-grid -->
-
-</div><!-- end tab-pod1 -->
-
-
-<!-- ════════════════════════════════════
-     TAB: POD 2
-════════════════════════════════════ -->
-<div id="tab-pod2" class="tab-content p2-col">
-
-  <div class="ov-explore" style="margin-bottom:16px;border-color:var(--p2-border);background:var(--p2-light);color:var(--p2-mid);">✦ New channel explore: budget ≤15%, time-box 6–8 tuần/kênh</div>
-
-  <div class="pod-page-header">
-    <div class="pph-badge">P2</div>
-    <div><div class="pph-title">Engagement, Retention &amp; Experiments</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">7 projects &nbsp;·&nbsp; Senior #2: TBH (handover từ Đạt) &nbsp;·&nbsp; Digital Spec: Kiet Huynh &nbsp;·&nbsp; Intern: Binh Nguyen</div></div>
-    <span class="pph-funnel">L3 → L4</span>
-  </div>
-
-  <div class="proj-cards-grid">
-
-    <!-- P2.1 Digital Ads -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">📊</span><div class="pj-title-wrap"><div class="pj-title">Campaign Performance — Digital Ads</div><div class="pj-subtitle">Ongoing monthly budget per vertical (DAU/DwL) + sync với Brand MKT campaign theo theme khi có</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">2 chế độ vận hành: <strong>(1) Ongoing monthly</strong> — mỗi tháng có budget allocated per vertical để chạy DAU/DwL campaigns thường xuyên (Google AWO, DWL, Facebook/IG). <strong>(2) MKT Campaign mode</strong> — khi Brand team lead một campaign lớn (vd: Tết, mid-year), Growth sync budget này để chạy cùng theme, amplify reach. Bao gồm Livestream operations (6 phiên/tháng) và push notification per vertical.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">Budget Q2 2026</div><div class="kpi-list"><span class="kpi-chip">PTY: 400M/tháng</span><span class="kpi-chip">JOB: 520M/tháng</span><span class="kpi-chip">VEH: 187M/tháng</span><span class="kpi-chip">GDS: 166M/tháng</span></div></div>
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">DAU w lead per vertical</span><span class="kpi-chip">CPA per vertical</span><span class="kpi-chip">ROAS by channel</span><span class="kpi-chip">DWL focus segment</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">PTY + JOB — KPI &amp; Budget 2026, structure campaign AWO</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">VEH Hero SKU support campaign — đã air, đang review kết quả</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Clarify KPI Q2 per vertical với Đạt</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">JOB: creative testing Facebook + push by job type</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Livestream: vận hành 6 phiên/tháng, plan Q2</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">Biz Obj 2: Tăng tỉ lệ user vào app make_lead từ Paid</span><span class="todo-s ts-blocked">PENDING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">PTY: Fix make_lead conversion goal với Dung</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Kiet Huynh</div><div class="pic-badge"><span class="pic-label-sm">Push Noti</span> Binh Nguyen</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Hoàng · Ngân</div></div>
-    </div>
-
-    <!-- P2.2 Save & Continue -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">💾</span><div class="pj-title-wrap"><div class="pj-title">Save &amp; Continue — Feature Optimization</div><div class="pj-subtitle">Optimize Save Ad + Save Search UX để tăng engagement và lead rate</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">Data: users có Save → lead 46.7% vs không Save 22.1%. Research đã identify 3 UX issues. Cần Product propose solutions và MKT educate users về giá trị Save. Revamp user profile homepage → tạo "save habit" (follow YouTube/Redfin model).</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">Key Data</div><div class="kpi-list"><span class="kpi-chip">w/ Save → Lead: 46.7%</span><span class="kpi-chip">No Save → Lead: 22.1%</span><span class="kpi-chip">Android save rate: 85.96% adview</span><span class="kpi-chip">iOS: 81.10%</span></div></div>
-          <div class="pj-section"><div class="dhead">Issues Found</div><div class="blocker-list" style="margin:0;"><div class="blocker-item">Save button ở top, user cần save sau khi xem xong (bottom)</div><div class="blocker-item">Save Search entry point sai moment</div><div class="blocker-item">Saved ad list khó access</div></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Research Save Search &amp; Save Ad — FINAL (Feb 2025)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Digital ads test event Save + Chat</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Product propose solutions từ research findings</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Revamp user profile/homepage → tạo "save habit"</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Email + Noti educate Save value cho new users</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">R</span> Trinh Huynh · Chau Vu Bao</div><div class="pic-badge"><span class="pic-label-sm">A</span> Tan Nguyen</div><div class="pic-badge"><span class="pic-label-sm">C</span> Đạt · Đức · Trang</div></div>
-    </div>
-
-    <!-- P2.3 Collections -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">📂</span><div class="pj-title-wrap"><div class="pj-title">Collections &amp; MF-Experience</div><div class="pj-subtitle">Build "my-self" behaviors: My Assets, My Activities, My Good Deals, My Shop, Nearby</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">2025 Engagement Plan focus area. Tạo "my-self" behaviors để user cảm thấy app là của họ. Key mechanics: Save + Collection + Comparison → better consideration → make_lead. ONFLOW là channel chính. Landing page collection bị block — cần BRD mới để continue.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">Collection creation rate</span><span class="kpi-chip">Save → Lead conversion</span><span class="kpi-chip">DAU w collection</span><span class="kpi-chip">Return visit to collection</span></div></div>
-          <div class="pj-section"><div class="dhead">Features in Scope</div><div class="tag-row"><span class="tag">Collections</span><span class="tag">Save Ad</span><span class="tag">Comparison</span><span class="tag">Nearby</span><span class="tag">My Profile</span><span class="tag">Recent Activity</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">1st collection campaign + report</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">2nd education campaign — Nearby (Noti)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Dashboard collection (theo Jacky's input)</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">LP Experience — Collection không continue được</span><span class="todo-s ts-blocked">BLOCKED</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">LP Map — không continue được</span><span class="todo-s ts-blocked">BLOCKED</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Viết BRD mới cho Landing Page Experience</span><span class="todo-s ts-ns">TODO (Chi Lê)</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">LP Collection và Map "không continue được" — cần BRD mới</div><div class="blocker-item">Search + Reco algorithm improvement ở Product side (in-progress)</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Đạt → Charlie</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Jacky</div></div>
-    </div>
-
-    <!-- P2.4 Campaign New UI -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">✨</span><div class="pj-title-wrap"><div class="pj-title">Campaign New UI + Buyer Journey Integration</div><div class="pj-subtitle">New UI proven: Lead +10.75%, Adview +12.59%. Buyer journey integration ongoing.</div></div><span class="status-badge s-done">Done / Ongoing</span></div>
-        <div class="pj-desc">Campaign New UI đã prove significant uplift trên tất cả engagement metrics. Buyer Journey: Discovery → Consideration → Connecting → Dealing. Tiếp theo: tích hợp Email/Noti/Ads vào từng stage để tạo personalized experience. Chotot Value Proposition per vertical đã document.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">Results</div><div class="kpi-list"><span class="kpi-chip">Lead D0: +10.75%</span><span class="kpi-chip">Adview D0: +12.59%</span><span class="kpi-chip">Lead W1: +7.92%</span><span class="kpi-chip">Adview W1: +8.57%</span><span class="kpi-chip">% Lead: 23.02%→24.79%</span></div></div>
-          <div class="pj-section"><div class="dhead">Buyer Journey Stages</div><div class="tag-row"><span class="tag">Discovery</span><span class="tag">Consideration</span><span class="tag">Connecting</span><span class="tag">Dealing</span></div></div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Campaign New UI experiment + results measured</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Buyer Value Proposition documented per vertical</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Email + Noti integration vào buyer journey stages</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Personalized content treatment theo buyer stage</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> Team MKT</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Đức Lê</div></div>
-    </div>
-
-    <!-- P2.5 Deeplink + User Profile -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🔗</span><div class="pj-title-wrap"><div class="pj-title">Deeplink + User Profile BRD</div><div class="pj-subtitle">Fix deeplink Social→Web-in-App. User Profile feature BRD chưa viết.</div></div><span class="status-badge s-blocked">Blocked</span></div>
-        <div class="pj-desc">Deeplink từ Social chỉ mở Web-in-App (không phải native app) → friction lớn cho user engagement và conversion. Đã sync requirement + example use cases với #ct-airbridge-mkt-protech, chờ dev confirm timeline. User Profile BRD là open question cho Chi Lê.</div>
-        <div class="pj-grid">
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Sync requirement + example use cases với Airbridge/ProTech</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-blocked"><div class="todo-dot"></div><span class="todo-txt">Dev confirm timeline deeplink fix — chờ response</span><span class="todo-s ts-blocked">WAITING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Viết BRD cho User Profile feature</span><span class="todo-s ts-ns">TODO (Chi Lê)</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Dev chưa confirm timeline (expect trước Tết → bị trễ)</div><div class="blocker-item">User Profile BRD chưa được viết — open question cho incoming PIC</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Đạt (handover)</div><div class="pic-badge"><span class="pic-label-sm">Tech</span> Airbridge team</div></div>
-    </div>
-
-    <!-- P2.6 Video Ads -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🎬</span><div class="pj-title-wrap"><div class="pj-title">Video Ads — Buyer &amp; Seller</div><div class="pj-subtitle">Video format để tăng engagement + retention. Buyer tested T11, Seller paused.</div></div><span class="status-badge s-ns">Not Started (2026)</span></div>
-        <div class="pj-desc">Video là format high-engagement phù hợp với mục tiêu Engagement &amp; Retention của P2. Buyer: đã test catalog video và "Xem video nhận quà" (T11/2025) — kết quả promising về view-to-lead. Seller: cần video để educate và motivate seller đăng tin với quality cao hơn, chưa define được value prop + incentive. Video pipeline qua Creatomate đang explore cho Social automation.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">Buyer — Đã làm</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Catalog test + report (T11/2025)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">"Xem video nhận quà" campaign — test &amp; operation</span><span class="todo-s ts-done">DONE</span></div>
-            </div>
-          </div>
-          <div class="pj-section"><div class="dhead">Seller — Status</div><div class="blocker-list" style="margin:0;"><div class="blocker-item" style="background:var(--ns-bg);border-color:var(--ns-c);color:var(--ns-c);">Paused — chưa define value prop + incentive cho seller</div></div></div>
-          <div class="pj-section full"><div class="dhead">Next Steps</div><div class="next-list"><div class="next-item">Define GTM plan Video Standalone 2026 cho Buyer (engagement angle)</div><div class="next-item">Define value prop + incentive offer cho Seller video</div><div class="next-item">Explore Creatomate pipeline cho Social Video automation</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> TBH</div></div>
-    </div>
-
-  </div><!-- end proj-cards-grid -->
-
-</div><!-- end tab-pod2 -->
-
-
-<!-- ════════════════════════════════════
-     TAB: SHARED TOOLS
-════════════════════════════════════ -->
-<div id="tab-shared" class="tab-content shared-col">
-
-  <div class="pod-page-header">
-    <div class="pph-badge">🔗</div>
-    <div><div class="pph-title">Shared Tools &amp; Platforms</div><div style="font-size:12px;color:var(--muted);margin-top:2px;">2 tools · Dùng chung cả 2 pods — execution tùy objective từng pod</div></div>
-    <span class="pph-funnel">Cross-pod</span>
-  </div>
-
-  <div class="proj-cards-grid">
-
-    <!-- S1: OnFlow incl. Email + ZNS -->
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🤖</span><div class="pj-title-wrap"><div class="pj-title">OnFlow &amp; UCDP — incl. Email &amp; ZNS</div><div class="pj-subtitle">Multi-channel CRM automation engine — Push Noti, Content Card, In-App, Email, ZNS, Zalo OA</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">OnFlow là backbone của toàn bộ Growth automation. <strong>Email và ZNS (Zalo Notification Service) là channels nằm trong OnFlow</strong> — không phải tool riêng. Master file quản lý campaigns across tất cả channels. UCDP hỗ trợ segmentation và personalization. Đã experiment Email: JOB 13% / GDS 18% / VEH 37% open rate D1. Đang fix metrics sai trên daily table.</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">Channels trong OnFlow</div><div class="tag-row"><span class="tag">Push Notification</span><span class="tag">Content Card</span><span class="tag">In-App Message</span><span class="tag">📧 Email</span><span class="tag">📲 ZNS (Zalo)</span><span class="tag">Zalo OA</span></div></div>
-          <div class="pj-section"><div class="dhead">KPIs</div><div class="kpi-list"><span class="kpi-chip">CTR per campaign</span><span class="kpi-chip">Email open rate</span><span class="kpi-chip">ZNS delivery rate</span><span class="kpi-chip">Conversion per channel</span><span class="kpi-chip">Segment reach</span></div></div>
-          <div class="pj-section full"><div class="dhead">Cách 2 pods dùng</div>
-            <div class="shared-usage-grid">
-              <div class="usage-pod-block p1-use"><div class="upb-label">Pod 1 — Acquisition &amp; Activation</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation campaigns (install_7d, segment 5-19 adviews)</div><div class="upb-item"><span class="upb-dot">·</span>Onboarding sequence D1-D8</div><div class="upb-item"><span class="upb-dot">·</span>Educate features: Save, Location, Search</div><div class="upb-item"><span class="upb-dot">·</span>Email/ZNS drip fallback cho users chưa allow noti</div><div class="upb-item"><span class="upb-dot">·</span>Re-engage new users chưa activated sau D7</div></div></div>
-              <div class="usage-pod-block p2-use"><div class="upb-label">Pod 2 — Engagement &amp; Retention</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Retention flows (re-engage lapsed users)</div><div class="upb-item"><span class="upb-dot">·</span>Behavioral retargeting (Save chưa Chat)</div><div class="upb-item"><span class="upb-dot">·</span>DAU recovery campaigns</div><div class="upb-item"><span class="upb-dot">·</span>A/B experiment triggers</div><div class="upb-item"><span class="upb-dot">·</span>Email/ZNS retention: saved ads update, price alert, buyer journey stages</div></div></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">6 OnFlow campaigns activation (install_7d, segment 5-19 adviews)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">JOB + PTY Push notification plan (Binh)</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Email experiments: JOB (13%), GDS (18%), VEH (37%) open rate</span><span class="todo-s ts-done">TESTED</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Fix metrics sai — Charlie check với Nhung (thiếu số onflow_campaign_daily)</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Revise content — bổ sung CTR metric vào master file</span><span class="todo-s ts-doing">DOING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Build Email platform: advanced features (automation, A/B, dynamic content)</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">ZNS automation — hiện vẫn rất manual, cần tech build</span><span class="todo-s ts-ns">TODO</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Email/ZNS drip automation onboarding D1-D5</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Metrics sai trên OnFlow — ảnh hưởng reporting và decision making</div><div class="blocker-item">ZNS + Email gửi tự động vẫn rất manual — cần tech build automation</div><div class="blocker-item">UI setup cho EMAIL + OA chưa sẵn sàng để biz trigger tự động</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">PIC</span> Đạt (handover)</div><div class="pic-badge"><span class="pic-label-sm">Ops</span> Charlie</div><div class="pic-badge"><span class="pic-label-sm">Email PIC</span> TBH</div><div class="pic-badge"><span class="pic-label-sm">Data</span> Nhung · Trang</div></div>
-    </div>
-    <div class="pj">
-      <div class="pj-stripe"></div>
-      <div class="pj-main">
-        <div class="pj-top"><span class="pj-em">🎁</span><div class="pj-title-wrap"><div class="pj-title">Rewards &amp; Incentives — BRD</div><div class="pj-subtitle">Self-serve Promotion &amp; Quest Engine — MKT độc lập không cần dev 4+ tuần/campaign</div></div><span class="status-badge s-doing">In Progress</span></div>
-        <div class="pj-desc">MKT hiện tại không thể chạy reward campaign không có engineering: quest system show tất cả user không target, reward delivery manual, không streak mechanic. BRD finalized 11 requirements. Rewards là công cụ quan trọng để activate new behaviors ở cả P1 (first actions) lẫn P2 (daily habit &amp; retention).</div>
-        <div class="pj-grid">
-          <div class="pj-section"><div class="dhead">11 Requirements</div><div class="tag-row"><span class="tag">Quest Config</span><span class="tag">Segment Assignment</span><span class="tag">Voucher Distribution</span><span class="tag">Multi-Reward</span><span class="tag">Streaks &amp; Chains</span><span class="tag">Seller Voucher</span><span class="tag">3rd-party API</span><span class="tag">Trigger &amp; Noti</span><span class="tag">Post-Quest Flow</span><span class="tag">High-Visibility Entry</span><span class="tag">Contextual In-app</span></div></div>
-          <div class="pj-section"><div class="dhead">Success Metrics</div><div class="kpi-list"><span class="kpi-chip">Quest completion rate</span><span class="kpi-chip">DAU uplift from quests</span><span class="kpi-chip">Streak D3+ rate</span><span class="kpi-chip">Voucher redemption rate</span></div></div>
-          <div class="pj-section full"><div class="dhead">Cách 2 pods dùng</div>
-            <div class="shared-usage-grid">
-              <div class="usage-pod-block p1-use"><div class="upb-label">Pod 1 — Acquisition &amp; Activation</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Activation quest: "20 adviews trong 7 ngày"</div><div class="upb-item"><span class="upb-dot">·</span>Incentivize first actions: Save, Lead, Login</div><div class="upb-item"><span class="upb-dot">·</span>Reward new users hoàn thành onboarding</div><div class="upb-item"><span class="upb-dot">·</span>Acquisition: "Mời bạn nhận thưởng" referral</div></div></div>
-              <div class="usage-pod-block p2-use"><div class="upb-label">Pod 2 — Engagement &amp; Retention</div><div class="upb-items"><div class="upb-item"><span class="upb-dot">·</span>Daily streak mechanics (DAU habit)</div><div class="upb-item"><span class="upb-dot">·</span>View/Save/Chat streak: consecutive days</div><div class="upb-item"><span class="upb-dot">·</span>Loyalty program cho returning users</div><div class="upb-item"><span class="upb-dot">·</span>Partner vouchers contextual khi browse</div></div></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Task Progress</div>
-            <div class="todo-list">
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">BRD finalized — 11 requirements documented đầy đủ</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-done"><div class="todo-dot"></div><span class="todo-txt">Brief Phúc Anh (Product) và bàn giao cho Lộc</span><span class="todo-s ts-done">DONE</span></div>
-              <div class="todo-item td-doing"><div class="todo-dot"></div><span class="todo-txt">Lộc define biz requirement + cùng Product prioritize</span><span class="todo-s ts-doing">IN PROGRESS</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Product estimate timeline và dev roadmap</span><span class="todo-s ts-ns">WAITING</span></div>
-              <div class="todo-item td-ns"><div class="todo-dot"></div><span class="todo-txt">Refactor session với Phúc Anh</span><span class="todo-s ts-ns">TODO</span></div>
-            </div>
-          </div>
-          <div class="pj-section full"><div class="dhead">Blockers</div><div class="blocker-list"><div class="blocker-item">Biz requirement chưa được Lộc define rõ — cần meeting ngay</div><div class="blocker-item">Product chưa prioritize → không có dev timeline</div></div></div>
-        </div>
-      </div>
-      <div class="pj-footer"><div class="pic-badge"><span class="pic-label-sm">MKT</span> Lộc Võ · Chi Pu</div><div class="pic-badge"><span class="pic-label-sm">PD</span> Phúc Anh</div><div class="pic-badge"><span class="pic-label-sm">PA</span> Đức Lê</div></div>
-    </div>
-
-  </div>
-</div><!-- end tab-shared -->
+<div class="main" id="main">
+  <div style="padding:40px;text-align:center;color:#6b7280">Đang tải dữ liệu...</div>
+</div>
 
 <script>
-function switchTab(tab, el) {
-  document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-  document.querySelectorAll('.nav-tab').forEach(b => b.classList.remove('active-all','active-p1','active-p2','active-shared'));
-  document.getElementById('tab-' + tab).classList.add('active');
-  const cls = {overview:'active-all',pod1:'active-p1',pod2:'active-p2',shared:'active-shared'};
-  el.classList.add(cls[tab]);
+// ─── UTILITIES ───────────────────────────────────────────────────────────────
+function statusClass(s){
+  if(!s) return 'notstarted';
+  const low = s.toLowerCase();
+  if(low.includes('done') && !low.includes('ongoing')) return 'done';
+  if(low.includes('maintain')) return 'maintain';
+  if(low.includes('ongoing')) return 'ongoing';
+  if(low.includes('progress') || low.includes('in progress')) return 'progress';
+  if(low.includes('pending')) return 'pending';
+  if(low.includes('block')) return 'blocked';
+  if(low.includes('waiting')) return 'waiting';
+  if(low.includes('not started')) return 'notstarted';
+  return 'progress';
 }
+
+function taskClass(s){
+  const m = {
+    'DONE':'DONE','DOING':'DOING','IN PROGRESS':'DOING','TODO':'TODO',
+    'NOT STARTED':'TODO','BLOCKED':'BLOCKED','WAITING':'WAITING',
+    'PENDING':'PENDING','TESTED':'DONE','CHƯA LÀM':'TODO'
+  };
+  return m[s] || 'TODO';
+}
+
+function pills(arr, cls=''){
+  if(!arr||!arr.length) return '';
+  return `<div class="pills">${arr.map(a=>`<span class="pill ${cls}">${a}</span>`).join('')}</div>`;
+}
+
+function renderPics(pics){
+  if(!pics||!pics.length) return '';
+  return `<div class="pics">${pics.map(p=>
+    `<span class="pic-tag"><span class="pic-name">${p.name}</span>${p.role?`<span class="pic-role"> · ${p.role}</span>`:''}</span>`
+  ).join('')}</div>`;
+}
+
+function renderTasks(tasks){
+  if(!tasks||!tasks.length) return '';
+  return `
+    <div class="section-label">Task Progress</div>
+    <ul class="task-list">${tasks.map(t=>`
+      <li class="task-item">
+        <span class="task-status ${taskClass(t.status)}">${t.status}</span>
+        <span class="task-label">${t.label}</span>
+      </li>`).join('')}
+    </ul>`;
+}
+
+function renderBlockers(arr){
+  if(!arr||!arr.length) return '';
+  return `<div class="blockers"><div class="bl-title">🚫 Blockers</div><ul>${arr.map(b=>`<li>${b}</li>`).join('')}</ul></div>`;
+}
+
+function renderNextSteps(arr){
+  if(!arr||!arr.length) return '';
+  return `<div class="next-steps"><div class="ns-title">Next Steps</div><ul>${arr.map(b=>`<li>${b}</li>`).join('')}</ul></div>`;
+}
+
+// ─── PROJECT CARD ────────────────────────────────────────────────────────────
+function renderProject(p){
+  let extras = '';
+
+  // Budget
+  if(p.budget&&p.budget.length)
+    extras += `<div class="section-label">Budget Q2 2026</div>
+      <div class="budget-grid">${p.budget.map(b=>`<div class="budget-item"><span class="vert">${b.vertical}</span><span class="amt">${b.amount}</span></div>`).join('')}</div>`;
+
+  // Key data
+  if(p.key_data&&p.key_data.length)
+    extras += `<div class="section-label">Key Data</div>
+      <div class="data-grid">${p.key_data.map(d=>`<div class="data-card"><div class="val">${d}</div></div>`).join('')}</div>`;
+
+  // Results
+  if(p.results&&p.results.length)
+    extras += `<div class="section-label">Results</div>
+      <div class="data-grid">${p.results.map(d=>`<div class="data-card"><div class="val">${d}</div></div>`).join('')}</div>`;
+
+  // Buyer journey
+  if(p.buyer_journey&&p.buyer_journey.length)
+    extras += `<div class="section-label">Buyer Journey</div>
+      <div class="journey">${p.buyer_journey.map((s,i)=>`<span class="journey-step">${s}</span>${i<p.buyer_journey.length-1?'<span class="journey-arrow">→</span>':''}`).join('')}</div>`;
+
+  // Requirements
+  if(p.requirements&&p.requirements.length)
+    extras += `<div class="section-label">11 Requirements</div><div class="req-grid">${p.requirements.map(r=>`<span class="req-pill">${r}</span>`).join('')}</div>`;
+
+  // Features
+  if(p.features&&p.features.length)
+    extras += `<div class="section-label">Features in Scope</div>${pills(p.features)}`;
+
+  // Issues found
+  if(p.issues_found&&p.issues_found.length)
+    extras += `<div class="section-label">Issues Found</div><ul>${p.issues_found.map(i=>`<li style="font-size:12px;color:#6b7280;padding:2px 0 2px 12px">• ${i}</li>`).join('')}</ul>`;
+
+  // Buyer done
+  if(p.buyer_done&&p.buyer_done.length)
+    extras += `<div class="section-label">Buyer — Đã làm</div><ul>${p.buyer_done.map(i=>`<li style="font-size:12px;color:#166534;padding:2px 0 2px 12px">✓ ${i}</li>`).join('')}</ul>`;
+  if(p.seller_status)
+    extras += `<div style="font-size:12px;color:#6b7280;margin-top:4px;font-style:italic">Seller: ${p.seller_status}</div>`;
+
+  // Chatbot flows
+  if(p.flows&&p.flows.length)
+    extras += `<div class="section-label">Flows Status</div>
+      <div class="flows">${p.flows.map(f=>`<span class="flow-item ${f.done?'done':'pending'}">${f.done?'✅':'❌'} ${f.label}</span>`).join('')}</div>`;
+
+  // Key insights
+  if(p.key_insights&&p.key_insights.length)
+    extras += `<div class="insights"><div class="i-title">💡 Key Insight</div><ul>${p.key_insights.map(i=>`<li>${i}</li>`).join('')}</ul></div>`;
+
+  // Open questions
+  if(p.open_questions&&p.open_questions.length)
+    extras += `<div class="open-q"><div class="oq-title">Open Questions</div><ul>${p.open_questions.map(q=>`<li>${q}</li>`).join('')}</ul></div>`;
+
+  return `
+  <div class="project-card">
+    <div class="card-header">
+      <div class="card-emoji">${p.emoji}</div>
+      <div class="card-title">
+        <h3>${p.name}</h3>
+        <div class="tagline">${p.tagline}</div>
+      </div>
+      <span class="status-badge ${statusClass(p.status)}">${p.status}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">${p.description}</div>
+      ${p.kpis&&p.kpis.length?`<div class="section-label">KPIs</div>${pills(p.kpis,'blue')}`:''}
+      ${p.channels&&p.channels.length?`<div class="section-label">Channels</div>${pills(p.channels)}`:''}
+      ${extras}
+      ${renderTasks(p.tasks)}
+      ${renderBlockers(p.blockers)}
+      ${renderNextSteps(p.next_steps)}
+      ${renderPics(p.pics)}
+    </div>
+  </div>`;
+}
+
+// ─── POD SECTION ─────────────────────────────────────────────────────────────
+function renderPodSection(pod){
+  const colorClass = pod.color || 'blue';
+  return `
+    <div class="projects-header">
+      <h2>${pod.label} — ${pod.name}</h2>
+      <div class="meta">
+        <span class="funnel-badge ${colorClass}">${pod.funnel}</span>
+        <span>${pod.project_count} projects</span>
+      </div>
+      <p style="font-size:13px;color:#6b7280;margin-top:6px;max-width:720px">${pod.description}</p>
+    </div>
+    ${pod.note?`<div class="note-box">${pod.note}</div>`:''}
+    ${pod.kpis&&pod.kpis.length?`<div style="margin-bottom:14px"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#6b7280">KPIs</span><div style="margin-top:4px">${pills(pod.kpis,colorClass)}</div></div>`:''}
+    ${pod.channels&&pod.channels.length?`<div style="margin-bottom:20px"><span style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#6b7280">Channels</span><div style="margin-top:4px">${pills(pod.channels)}</div></div>`:''}
+    <div class="section-label" style="margin-bottom:8px">Personnel</div>
+    <div class="personnel-grid">
+      ${pod.personnel.map(p=>`
+        <div class="person-card">
+          <div class="person-role">${p.role}</div>
+          <div class="person-name">${p.name}</div>
+          <div class="person-desc">${p.description}</div>
+        </div>`).join('')}
+    </div>
+    <div class="divider"></div>
+    <div class="projects-grid">${pod.projects.map(renderProject).join('')}</div>
+    ${pod.footer_note?`<div class="footer-note">${pod.footer_note}</div>`:''}`;
+}
+
+// ─── SHARED TOOLS ────────────────────────────────────────────────────────────
+function renderSharedTool(t){
+  return `
+  <div class="project-card">
+    <div class="card-header">
+      <div class="card-emoji">${t.emoji}</div>
+      <div class="card-title">
+        <h3>${t.name}</h3>
+        <div class="tagline">${t.tagline}</div>
+      </div>
+      <span class="status-badge ${statusClass(t.status)}">${t.status}</span>
+    </div>
+    <div class="card-body">
+      <div class="card-desc">${t.description}</div>
+      ${t.channels&&t.channels.length?`<div class="section-label">Channels</div>${pills(t.channels)}`:''}
+      ${t.kpis&&t.kpis.length?`<div class="section-label">KPIs</div>${pills(t.kpis,'blue')}`:''}
+      ${t.requirements&&t.requirements.length?`<div class="section-label">Requirements</div><div class="req-grid">${t.requirements.map(r=>`<span class="req-pill">${r}</span>`).join('')}</div>`:''}
+      ${t.pod_usage?`<div class="section-label">Cách 2 pods dùng</div>
+        <div class="pod-usage-grid">
+          <div class="pod-usage-col p1"><div class="pu-label">Pod 1 — Acquisition</div><ul>${(t.pod_usage.p1||[]).map(i=>`<li>${i}</li>`).join('')}</ul></div>
+          <div class="pod-usage-col p2"><div class="pu-label">Pod 2 — Engagement</div><ul>${(t.pod_usage.p2||[]).map(i=>`<li>${i}</li>`).join('')}</ul></div>
+        </div>`:''}
+      ${renderTasks(t.tasks)}
+      ${renderBlockers(t.blockers)}
+      ${renderNextSteps(t.next_steps)}
+      ${renderPics(t.pics)}
+    </div>
+  </div>`;
+}
+
+// ─── OVERVIEW ────────────────────────────────────────────────────────────────
+function renderOverview(data){
+  return `
+    <div class="overview-grid">
+      ${data.pods.map(pod=>`
+        <div class="pod-summary ${pod.color}" onclick="showTab('${pod.id}')">
+          <div class="pod-label">${pod.label}</div>
+          <div class="funnel">${pod.funnel}</div>
+          <h3>${pod.name}</h3>
+          <p>${pod.description}</p>
+          <div class="count">📁 ${pod.project_count} projects</div>
+          <div class="kpi-list">${pod.kpis.slice(0,4).map(k=>`<span class="kpi-pill ${pod.color}">${k}</span>`).join('')}</div>
+        </div>`).join('')}
+      <div class="shared-overview">
+        <h3>🔗 Shared Tools & Platforms</h3>
+        ${data.shared_tools.map(t=>`
+          <div class="tool-row">
+            <div class="tool-emoji">${t.emoji}</div>
+            <div class="tool-info">
+              <h4>${t.name}</h4>
+              <p>${t.tagline}</p>
+            </div>
+          </div>`).join('')}
+      </div>
+    </div>`;
+}
+
+// ─── MAIN RENDER ─────────────────────────────────────────────────────────────
+let currentData = null;
+
+function showTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const sec = document.getElementById('section-'+id);
+  if(sec) sec.classList.add('active');
+  const btn = document.getElementById('btn-'+id);
+  if(btn) btn.classList.add('active');
+}
+
+function render(data){
+  currentData = data;
+  document.getElementById('site-title').textContent = data.meta.title;
+  document.getElementById('site-subtitle').textContent = data.meta.team_summary;
+  document.getElementById('last-updated').textContent = 'Updated: ' + data.meta.last_updated;
+
+  // Nav
+  const navTabs = [
+    {id:'overview', label:'📋 Overview SoW'},
+    ...data.pods.map(p=>({id:p.id, label:p.nav_label})),
+    {id:'shared', label:'🔗 Shared Tools & Platforms'}
+  ];
+  document.getElementById('nav').innerHTML = navTabs.map(t=>
+    `<button class="nav-btn" id="btn-${t.id}" onclick="showTab('${t.id}')">${t.label}</button>`
+  ).join('');
+
+  // Sections
+  const sections = [
+    `<div class="section active" id="section-overview">${renderOverview(data)}</div>`,
+    ...data.pods.map(p=>`<div class="section" id="section-${p.id}">${renderPodSection(p)}</div>`),
+    `<div class="section" id="section-shared">
+      <div class="projects-header"><h2>🔗 Shared Tools & Platforms</h2><div class="meta"><span>2 tools · Dùng chung cả 2 pods</span></div></div>
+      <div class="shared-tools-grid">${data.shared_tools.map(renderSharedTool).join('')}</div>
+    </div>`
+  ];
+  document.getElementById('main').innerHTML = sections.join('');
+  document.getElementById('btn-overview').classList.add('active');
+}
+
+// ─── LOAD DATA ───────────────────────────────────────────────────────────────
+fetch('data.json?v=' + Date.now())
+  .then(r => { if(!r.ok) throw new Error('HTTP '+r.status); return r.json(); })
+  .then(render)
+  .catch(err => {
+    document.getElementById('main').innerHTML = `<div style="padding:40px;text-align:center;color:#dc2626">
+      <p style="font-size:16px;font-weight:700">Không thể tải data.json</p>
+      <p style="margin-top:8px;color:#6b7280">${err.message}</p>
+      <p style="margin-top:8px;color:#6b7280;font-size:12px">Trang này cần được serve qua HTTP server (GitHub Pages). Không hoạt động khi mở file:// trực tiếp.</p>
+    </div>`;
+  });
 </script>
 </body>
 </html>
